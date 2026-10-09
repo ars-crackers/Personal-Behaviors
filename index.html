@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>தொழில்முனைவோர் சுய முன்னேற்ற கையேடு · Study Book</title>
+<meta name="description" content="தமிழில் ஒரு முழுமையான தொழில்முனைவோர் சுய முன்னேற்ற படிப்பு நூல் — 12 அத்தியாயங்கள், 14 விளக்கப்படங்கள், 90-நாள் செயல் திட்டம், சுய மதிப்பீட்டுக் கருவி.">
+<meta property="og:title" content="தொழில்முனைவோர் சுய முன்னேற்ற கையேடு">
+<meta property="og:description" content="மனநிலை · நடத்தை · நிதி · சிஸ்டம்ஸ் · தலைமைத்துவம் — 12 அத்தியாயங்கள் கொண்ட தமிழ் படிப்பு நூல்.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@400;600;800&family=Noto+Sans+Tamil:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E2B33;
+  --ink-soft:#3C5A63;
+  --paper:#F2EFE7;
+  --paper-2:#FAF8F3;
+  --jade:#1F7A6B;
+  --clay:#A8402F;
+  --brass:#C08A2E;
+  --line:#D8D2C4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);color:#DCE7E5;
+  font-family:'Noto Sans Tamil',system-ui,sans-serif;
+  font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+h1,h2,h3,.display{font-family:'Anek Tamil','Noto Sans Tamil',sans-serif;font-weight:800;line-height:1.3}
+.mono{font-family:'IBM Plex Mono','Anek Tamil',monospace}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;padding:70px 0 64px}
+.hero .bg{position:absolute;inset:0;opacity:.5;pointer-events:none}
+.hero .inner{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:52px;align-items:center}
+.eyebrow{font-family:'IBM Plex Mono','Anek Tamil',monospace;font-size:11px;letter-spacing:3px;color:var(--brass);text-transform:uppercase}
+.hero h1{font-size:clamp(27px,3.1vw,37px);color:#fff;margin:18px 0 16px;letter-spacing:-.005em}
+.hero h1 .hl{color:#7FC0B4}
+.hero p.lede{font-size:18px;color:#B9CBC8;max-width:52ch}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.badges span{
+  font-family:'IBM Plex Mono','Anek Tamil',monospace;font-size:12.5px;letter-spacing:.5px;
+  border:1px solid rgba(192,138,46,.45);color:#E8D5AE;border-radius:20px;padding:6px 15px;
+}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;border-radius:10px;
+  padding:14px 26px;font-family:'Anek Tamil';font-weight:600;font-size:16px;transition:.18s;border:1px solid transparent;
+}
+.btn.primary{background:var(--brass);color:#241703}
+.btn.primary:hover{background:#D89C36;transform:translateY(-2px)}
+.btn.ghost{border-color:rgba(255,255,255,.28);color:#DCE7E5}
+.btn.ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+
+/* ---------- STATS ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:46px;border-top:1px solid rgba(255,255,255,.12);padding-top:26px}
+.stats b{display:block;font-family:'Anek Tamil';font-size:30px;color:var(--brass);line-height:1}
+.stats span{font-size:13.5px;color:#9FB4B1}
+
+/* ---------- CONTENTS ---------- */
+.sheet{background:var(--paper);color:var(--ink);padding:64px 0 70px}
+.sheet h2{font-size:clamp(24px,3vw,32px);margin-bottom:6px}
+.sheet .sub{color:var(--ink-soft);margin-bottom:34px}
+.chapters{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.chap{
+  background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+  text-decoration:none;color:var(--ink);display:block;transition:.18s;
+}
+.chap:hover{border-color:var(--jade);transform:translateY(-3px);box-shadow:0 8px 22px rgba(14,43,51,.09)}
+.chap i{font-family:'IBM Plex Mono',monospace;font-style:normal;font-size:11px;color:var(--brass);letter-spacing:1px}
+.chap b{display:block;font-family:'Anek Tamil';font-weight:600;font-size:17px;margin:4px 0 2px}
+.chap span{font-size:12.5px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;letter-spacing:.3px}
+
+/* ---------- FEATURES ---------- */
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+.fcard{border-left:3px solid var(--jade);padding-left:16px}
+.fcard h3{font-size:18px;margin-bottom:6px}
+.fcard p{font-size:15px;color:var(--ink-soft)}
+
+/* ---------- HOWTO ---------- */
+.dark{padding:60px 0}
+.dark h2{color:#fff;font-size:clamp(22px,2.6vw,28px);margin-bottom:24px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:18px}
+.step i{font-family:'IBM Plex Mono',monospace;font-style:normal;color:var(--brass);font-size:12px}
+.step b{display:block;font-family:'Anek Tamil';font-size:16.5px;color:#fff;margin:6px 0 4px}
+.step p{font-size:14px;color:#A9BFBC}
+
+footer{border-top:1px solid rgba(255,255,255,.1);padding:28px 0;font-size:13.5px;color:#8CA3A0;text-align:center}
+footer .mono{font-size:11.5px;letter-spacing:1px;color:#6E8582;display:block;margin-top:6px}
+
+@media (max-width:900px){
+  .hero .inner{grid-template-columns:1fr;gap:34px}
+  .chapters,.feat,.steps{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr;gap:20px}
+}
+@media (max-width:560px){
+  .chapters,.feat,.steps{grid-template-columns:1fr}
+  .btn{width:100%;justify-content:center}
+  .wrap{padding:0 18px}
+  .hero{padding:44px 0 48px}
+  .hero h1{font-size:24px;overflow-wrap:break-word}
+  .hero p.lede{font-size:16px}
+  .eyebrow{font-size:10px;letter-spacing:1.6px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <svg class="bg" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="climb" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0%" stop-color="#1F7A6B" stop-opacity=".9"/>
+        <stop offset="100%" stop-color="#C08A2E" stop-opacity=".9"/>
+      </linearGradient>
+    </defs>
+    <g stroke="#1B3E47" stroke-width="1" opacity=".8">
+      <path d="M0 100H1440M0 200H1440M0 300H1440M0 400H1440M0 500H1440"/>
+      <path d="M120 0V620M320 0V620M520 0V620M720 0V620M920 0V620M1120 0V620M1320 0V620"/>
+    </g>
+    <path d="M60 560 C 260 560, 300 430, 460 400 S 700 350, 860 250 S 1180 130, 1390 70"
+          fill="none" stroke="url(#climb)" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+    <g>
+      <circle cx="460" cy="400" r="7" fill="#0E2B33" stroke="#1F7A6B" stroke-width="3"/>
+      <circle cx="860" cy="250" r="7" fill="#0E2B33" stroke="#7FC0B4" stroke-width="3"/>
+      <circle cx="1390" cy="70" r="9" fill="#C08A2E"/>
+    </g>
+    <path d="M60 560H1390" stroke="#345C66" stroke-width="2" stroke-dasharray="6 7" opacity=".55"/>
+  </svg>
+
+  <div class="wrap inner">
+    <div>
+      <div class="eyebrow mono">Personal Behaviour · Mindset · Business Growth</div>
+      <h1>ஒரு தொழில்முனைவோரின்<br><span class="hl">சுய முன்னேற்ற</span> கையேடு</h1>
+      <p class="lede">தொழிலில் வெற்றி என்பது தயாரிப்பால் மட்டும் வருவதில்லை — அது நிறுவனரின் தினசரி நடத்தை, மனநிலை, மற்றும் அவர் கட்டமைக்கும் அமைப்புகளால் (Systems) தீர்மானிக்கப்படுகிறது. இது 12 அத்தியாயங்கள் கொண்ட முழுமையான தமிழ் படிப்பு நூல்.</p>
+      <div class="badges">
+        <span>தமிழ்</span><span>FREE · OPEN</span><span>NO SIGN-UP</span><span>MOBILE READY</span>
+      </div>
+      <div class="cta">
+        <a class="btn primary" href="book.html">நூலைப் படிக்கத் தொடங்கு →</a>
+        <a class="btn ghost" href="guide.pdf">PDF பதிவிறக்கம்</a>
+      </div>
+    </div>
+
+    <div>
+      <svg viewBox="0 0 420 460" role="img" aria-label="நூலின் அட்டைப்படம்" style="width:100%;height:auto;filter:drop-shadow(0 22px 40px rgba(0,0,0,.4))">
+        <rect x="30" y="20" width="360" height="420" rx="10" fill="#123640"/>
+        <rect x="30" y="20" width="16" height="420" rx="3" fill="#C08A2E" opacity=".85"/>
+        <rect x="70" y="60" width="280" height="1.5" fill="#2C5560"/>
+        <text x="70" y="48" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="2.5" fill="#C08A2E">STUDY BOOK · 2026</text>
+        <text x="70" y="120" font-family="Anek Tamil, sans-serif" font-weight="800" font-size="27" fill="#FFFFFF">தொழில்முனைவோர்</text>
+        <text x="70" y="156" font-family="Anek Tamil, sans-serif" font-weight="800" font-size="27" fill="#7FC0B4">சுய முன்னேற்ற</text>
+        <text x="70" y="192" font-family="Anek Tamil, sans-serif" font-weight="800" font-size="27" fill="#FFFFFF">கையேடு</text>
+        <g font-family="Noto Sans Tamil, sans-serif" font-size="13" fill="#9FB4B1">
+          <text x="70" y="242">மனநிலை · நடத்தை · நிதி</text>
+          <text x="70" y="266">சிஸ்டம்ஸ் · தலைமைத்துவம்</text>
+        </g>
+        <g>
+          <rect x="70" y="300" width="120" height="66" rx="8" fill="#1A424D"/>
+          <text x="130" y="330" text-anchor="middle" font-family="Anek Tamil" font-weight="800" font-size="22" fill="#C08A2E">12</text>
+          <text x="130" y="350" text-anchor="middle" font-family="Noto Sans Tamil" font-size="11" fill="#9FB4B1">அத்தியாயங்கள்</text>
+          <rect x="205" y="300" width="120" height="66" rx="8" fill="#1A424D"/>
+          <text x="265" y="330" text-anchor="middle" font-family="Anek Tamil" font-weight="800" font-size="22" fill="#7FC0B4">14</text>
+          <text x="265" y="350" text-anchor="middle" font-family="Noto Sans Tamil" font-size="11" fill="#9FB4B1">விளக்கப்படங்கள்</text>
+        </g>
+        <path d="M70 400H350" stroke="#2C5560" stroke-width="1.5"/>
+        <text x="70" y="424" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.6" fill="#5E7C84">SELF-DEVELOPMENT · TAMIL EDITION</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="stats">
+      <div><b>12</b><span>அத்தியாயங்கள்</span></div>
+      <div><b>14</b><span>விளக்கப்படங்கள்</span></div>
+      <div><b>90</b><span>நாள் செயல் திட்டம்</span></div>
+      <div><b>1</b><span>சுய மதிப்பீட்டுக் கருவி</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTENTS ================= -->
+<section class="sheet">
+  <div class="wrap">
+    <h2>பொருளடக்கம்</h2>
+    <p class="sub">ஒவ்வொரு அத்தியாயமும் <b>கருத்து → விளக்கப்படம் → அட்டவணை → செயல் திட்டம்</b> என்ற ஒரே கட்டமைப்பைப் பின்பற்றுகிறது.</p>
+
+    <div class="chapters">
+      <a class="chap" href="book.html#c1"><i>01</i><b>இலக்கும் பொறுப்பேற்றலும்</b><span>10X Rule · Ownership</span></a>
+      <a class="chap" href="book.html#c2"><i>02</i><b>தோற்றம், தொனி, தோரணை</b><span>Personal Brand</span></a>
+      <a class="chap" href="book.html#c3"><i>03</i><b>உணர்ச்சி & தொடர் கற்றல்</b><span>Circle of Control</span></a>
+      <a class="chap" href="book.html#c4"><i>04</i><b>நேரம் & உற்பத்தித்திறன்</b><span>Eisenhower · 80/20</span></a>
+      <a class="chap" href="book.html#c5"><i>05</i><b>நிதி மேலாண்மை</b><span>Cashflow · Emergency Fund</span></a>
+      <a class="chap" href="book.html#c6"><i>06</i><b>சிஸ்டம்ஸ், SOP & குழு</b><span>Delegation Ladder</span></a>
+      <a class="chap" href="book.html#c7"><i>07</i><b>விற்பனை & வாடிக்கையாளர்</b><span>Funnel · CAC / LTV</span></a>
+      <a class="chap" href="book.html#c8"><i>08</i><b>தோல்வி & மனநிலை</b><span>Scarcity vs Abundance</span></a>
+      <a class="chap" href="book.html#c9"><i>09</i><b>ஆற்றல் & ஆரோக்கியம்</b><span>Energy Management</span></a>
+      <a class="chap" href="book.html#c10"><i>10</i><b>90-நாள் செயல் திட்டம்</b><span>Implementation Roadmap</span></a>
+      <a class="chap" href="book.html#c11"><i>11</i><b>சுய மதிப்பீடு</b><span>Interactive Scorecard</span></a>
+      <a class="chap" href="book.html#c12"><i>12</i><b>சொற்களஞ்சியம்</b><span>Glossary of Key Terms</span></a>
+    </div>
+
+    <div class="feat">
+      <div class="fcard">
+        <h3>விளக்கப்படங்கள்</h3>
+        <p>ஐசன்ஹோவர் அட்டவணை, விற்பனைப் புனல், பரேட்டோ வரைபடம், SOP ஓட்டப்படம் — அனைத்தும் SVG ஆக வரையப்பட்டவை, இணையம் இல்லாமலும் திறக்கும்.</p>
+      </div>
+      <div class="fcard">
+        <h3>செயல் பயிற்சிகள்</h3>
+        <p>ஒவ்வொரு அத்தியாயத்தின் முடிவிலும் அந்த வாரமே செய்யக்கூடிய பணிகள். தட்டி (click) முடித்ததாகக் குறியிடலாம்.</p>
+      </div>
+      <div class="fcard">
+        <h3>சுய மதிப்பீட்டுக் கருவி</h3>
+        <p>9 துறைகளில் உங்களை மதிப்பிட்டு, 90-க்கு மதிப்பெண் பெற்று, எந்த அத்தியாயத்தில் கவனம் தேவை என்பதை அறியுங்கள்.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW TO USE ================= -->
+<section class="dark">
+  <div class="wrap">
+    <h2>இந்த நூலை எப்படிப் படிப்பது</h2>
+    <div class="steps">
+      <div class="step"><i>STEP 01</i><b>வாரம் ஒரு அத்தியாயம்</b><p>ஒரே நாளில் முழுவதையும் படிக்க முயற்சிக்காதீர்கள். ஒரு அத்தியாயம், ஒரு வாரம்.</p></div>
+      <div class="step"><i>STEP 02</i><b>விளக்கப்படத்தை நகலெடு</b><p>ஒவ்வொரு படத்தையும் உங்கள் சொந்த தொழிலுக்கு ஏற்ப ஒரு நோட்டில் மீண்டும் வரையுங்கள்.</p></div>
+      <div class="step"><i>STEP 03</i><b>செயல் திட்டத்தைச் செய்</b><p>படித்தது செயலாக மாறாதவரை அது அறிவு அல்ல, வெறும் தகவல்.</p></div>
+      <div class="step"><i>STEP 04</i><b>90 நாளில் மறுமதிப்பீடு</b><p>சுய மதிப்பீட்டுக் கருவிக்குத் திரும்பி வந்து, மதிப்பெண் உயர்ந்ததா எனப் பாருங்கள்.</p></div>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="book.html">அத்தியாயம் 01-ல் தொடங்கு →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    தமிழ் தொழில்முனைவோர் சுய முன்னேற்ற கையேடு · படிப்பு நோக்கத்திற்காக (Study Purpose)
+    <span class="mono">HOSTED ON GITHUB PAGES</span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>தொழில்முனைவோர் சுய முன்னேற்ற வழிகாட்டி | Study Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@400;600;800&family=Noto+Sans+Tamil:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E2B33;
+  --ink-soft:#3C5A63;
+  --paper:#F2EFE7;
+  --paper-2:#FAF8F3;
+  --jade:#1F7A6B;
+  --clay:#A8402F;
+  --brass:#C08A2E;
+  --line:#D8D2C4;
+  --shadow:0 1px 3px rgba(14,43,51,.08),0 8px 24px rgba(14,43,51,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Noto Sans Tamil',system-ui,sans-serif;
+  font-size:16px;line-height:1.75;
+}
+h1,h2,h3,h4,.display{font-family:'Anek Tamil','Noto Sans Tamil',sans-serif;font-weight:800;line-height:1.3}
+.mono{font-family:'IBM Plex Mono','Anek Tamil',monospace}
+
+/* ---------- LAYOUT ---------- */
+.shell{display:grid;grid-template-columns:280px 1fr;max-width:1400px;margin:0 auto}
+nav.toc{
+  position:sticky;top:0;height:100vh;overflow-y:auto;
+  background:var(--ink);color:#DCE7E5;padding:28px 20px;
+}
+nav.toc .brand{font-family:'Anek Tamil';font-weight:800;font-size:19px;color:#fff;line-height:1.35}
+nav.toc .brand span{display:block;font-family:'IBM Plex Mono','Anek Tamil';font-size:10px;letter-spacing:2px;color:var(--brass);margin-top:8px;font-weight:400}
+nav.toc ol{list-style:none;padding:0;margin:26px 0 0;counter-reset:c}
+nav.toc li{counter-increment:c;margin-bottom:2px}
+nav.toc a{
+  display:flex;gap:10px;align-items:baseline;text-decoration:none;color:#B9CBC8;
+  font-size:14px;padding:8px 10px;border-radius:7px;transition:.18s;line-height:1.45
+}
+nav.toc a::before{content:counter(c,decimal-leading-zero);font-family:'IBM Plex Mono','Anek Tamil';font-size:10px;color:var(--brass);flex:none;padding-top:3px}
+nav.toc a:hover,nav.toc a.active{background:rgba(192,138,46,.16);color:#fff}
+main{padding:0 0 80px;background:var(--paper)}
+.wrap{max-width:820px;margin:0 auto;padding:0 32px}
+
+/* ---------- HERO ---------- */
+header.hero{
+  background:var(--ink);color:#fff;padding:70px 32px 60px;position:relative;overflow:hidden
+}
+header.hero .wrap{position:relative;z-index:2}
+.eyebrow{font-family:'IBM Plex Mono','Anek Tamil';font-size:11px;letter-spacing:3px;color:var(--brass);text-transform:uppercase}
+header.hero h1{font-size:clamp(30px,5vw,46px);margin:16px 0 14px;color:#fff}
+header.hero p.lede{font-size:17px;color:#B9CBC8;max-width:620px;margin:0}
+.hero-stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.hero-stats div{background:rgba(255,255,255,.07);border:1px solid rgba(192,138,46,.35);border-radius:10px;padding:12px 18px}
+.hero-stats b{display:block;font-family:'Anek Tamil';font-size:24px;color:var(--brass)}
+.hero-stats span{font-size:12.5px;color:#B9CBC8}
+.hero-bg{position:absolute;inset:0;opacity:.13;z-index:1}
+
+/* ---------- CHAPTERS ---------- */
+section.chapter{padding:54px 0 10px;border-top:1px solid var(--line)}
+section.chapter:first-of-type{border-top:none}
+.ch-head{display:flex;gap:18px;align-items:flex-start;margin-bottom:22px}
+.ch-num{
+  font-family:'IBM Plex Mono','Anek Tamil';font-size:12px;font-weight:600;color:#fff;background:var(--jade);
+  border-radius:8px;padding:8px 11px;flex:none;letter-spacing:1px
+}
+.ch-head h2{font-size:27px;margin:0}
+.ch-head .ch-sub{font-size:13px;color:var(--ink-soft);font-family:'IBM Plex Mono','Anek Tamil';letter-spacing:.4px;margin-top:4px}
+h3{font-size:19px;margin:34px 0 8px;color:var(--ink)}
+h3 .tag{font-family:'IBM Plex Mono','Anek Tamil';font-size:11px;color:var(--jade);font-weight:600;margin-right:8px}
+h4{font-size:15px;margin:18px 0 6px}
+p{margin:10px 0}
+ul,ol{padding-left:22px;margin:10px 0}
+li{margin:6px 0}
+b{color:var(--ink)}
+.en{font-family:'IBM Plex Mono','Anek Tamil';font-size:.86em;color:var(--ink-soft)}
+
+/* ---------- COMPONENTS ---------- */
+figure{margin:26px 0;background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:12.5px;color:var(--ink-soft);margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);text-align:center}
+figcaption b{font-family:'IBM Plex Mono','Anek Tamil';font-size:12.5px;color:var(--jade);letter-spacing:.3px}
+
+.callout{border-left:4px solid var(--brass);background:var(--paper-2);border-radius:0 10px 10px 0;padding:14px 18px;margin:20px 0}
+.callout .lbl{font-family:'IBM Plex Mono','Anek Tamil';font-size:12.5px;letter-spacing:.4px;color:var(--brass);text-transform:uppercase;font-weight:600}
+.callout.jade{border-left-color:var(--jade)} .callout.jade .lbl{color:var(--jade)}
+.callout.clay{border-left-color:var(--clay)} .callout.clay .lbl{color:var(--clay)}
+.callout p:last-child{margin-bottom:0}
+
+blockquote{margin:24px 0;padding:18px 22px;background:var(--ink);color:#EAF1EF;border-radius:12px;font-size:17px;font-family:'Anek Tamil';font-weight:600;line-height:1.6}
+blockquote cite{display:block;font-family:'IBM Plex Mono','Anek Tamil';font-size:12.5px;font-style:normal;color:var(--brass);margin-top:10px}
+
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;background:var(--paper-2);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+th{background:var(--ink);color:#fff;text-align:left;padding:11px 13px;font-family:'Anek Tamil';font-weight:600;font-size:15px}
+td{padding:10px 13px;border-top:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:rgba(216,210,196,.16)}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.card{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.card h4{margin-top:0;color:var(--jade);font-size:15px}
+.card.bad h4{color:var(--clay)}
+.card ul{padding-left:18px;margin:8px 0 0;font-size:14px}
+
+.checklist{list-style:none;padding:0}
+.checklist li{display:flex;gap:11px;align-items:flex-start;background:var(--paper-2);border:1px solid var(--line);border-radius:9px;padding:11px 14px;margin:8px 0;cursor:pointer;transition:.15s;font-size:14.5px}
+.checklist li:hover{border-color:var(--jade)}
+.checklist li.done{background:rgba(31,122,107,.09);border-color:var(--jade);text-decoration:line-through;color:var(--ink-soft)}
+.checklist .box{width:19px;height:19px;border:2px solid var(--jade);border-radius:5px;flex:none;margin-top:3px;position:relative}
+.checklist li.done .box::after{content:"✓";position:absolute;inset:-3px 0 0 2px;color:var(--jade);font-weight:700;font-size:15px}
+
+/* self assessment */
+.assess{background:var(--ink);color:#EAF1EF;border-radius:16px;padding:26px;margin:26px 0}
+.assess h3{color:#fff;margin:0 0 4px}
+.assess .sub{font-size:13px;color:#9DB4B1;margin-bottom:20px}
+.slider-row{margin:14px 0}
+.slider-row label{display:flex;justify-content:space-between;font-size:14px;margin-bottom:5px}
+.slider-row label b{color:var(--brass);font-family:'IBM Plex Mono','Anek Tamil'}
+input[type=range]{width:100%;accent-color:var(--brass);height:5px}
+#scoreOut{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.15)}
+.bar-row{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:13px}
+.bar-row .nm{width:150px;flex:none;color:#B9CBC8}
+.bar-track{flex:1;height:16px;background:rgba(255,255,255,.09);border-radius:8px;overflow:hidden}
+.bar-fill{display:block;height:100%;border-radius:8px;transition:width .4s}
+.total{font-family:'Anek Tamil';font-size:20px;color:#fff;margin-top:16px}
+.total b{color:var(--brass);font-size:28px}
+
+/* glossary */
+dl.gloss{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:6px 20px 16px;margin:20px 0}
+dl.gloss dt{font-family:'IBM Plex Mono','Anek Tamil';font-size:13px;font-weight:600;color:var(--jade);margin-top:14px}
+dl.gloss dd{margin:3px 0 0;font-size:14.5px}
+
+footer{background:var(--ink);color:#9DB4B1;padding:34px 32px;text-align:center;font-size:13px;margin-top:50px}
+footer b{color:var(--brass);font-family:'Anek Tamil'}
+
+.toolbar{position:fixed;bottom:20px;right:20px;display:flex;gap:8px;z-index:50}
+.toolbar button{background:var(--ink);color:#fff;border:1px solid var(--brass);border-radius:30px;padding:11px 18px;font-family:'Noto Sans Tamil';font-size:13px;cursor:pointer;box-shadow:var(--shadow)}
+.toolbar button:hover{background:var(--jade)}
+
+@media(max-width:900px){
+  .shell{grid-template-columns:1fr}
+  nav.toc{position:static;height:auto}
+  nav.toc ol{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+  .grid2{grid-template-columns:1fr}
+  .wrap{padding:0 20px}
+  .bar-row .nm{width:100px;font-size:12px}
+}
+@media print{
+  nav.toc,.toolbar{display:none}
+  .shell{grid-template-columns:1fr}
+  body{background:#fff;font-size:11.5pt}
+  section.chapter{page-break-inside:auto}
+  figure{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+<!-- ================= NAV ================= -->
+<nav class="toc">
+  <div class="brand">தொழில்முனைவோர்<br>சுய முன்னேற்ற வழிகாட்டி<span>STUDY BOOK · 2026</span></div>
+  <ol>
+    <li><a href="#c1">இலக்கும் பொறுப்பேற்றலும்</a></li>
+    <li><a href="#c2">தோற்றம், தொனி, தோரணை</a></li>
+    <li><a href="#c3">உணர்ச்சி & தொடர் கற்றல்</a></li>
+    <li><a href="#c4">நேரம் & உற்பத்தித்திறன்</a></li>
+    <li><a href="#c5">நிதி மேலாண்மை</a></li>
+    <li><a href="#c6">சிஸ்டம்ஸ், SOP & குழு</a></li>
+    <li><a href="#c7">விற்பனை & வாடிக்கையாளர்</a></li>
+    <li><a href="#c8">தோல்வி & மனநிலை</a></li>
+    <li><a href="#c9">ஆற்றல் & ஆரோக்கியம்</a></li>
+    <li><a href="#c10">90-நாள் செயல் திட்டம்</a></li>
+    <li><a href="#c11">சுய மதிப்பீடு</a></li>
+    <li><a href="#c12">சொற்களஞ்சியம்</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <svg class="hero-bg" viewBox="0 0 800 400" preserveAspectRatio="none" aria-hidden="true">
+    <g stroke="#C08A2E" stroke-width="1" fill="none">
+      <path d="M0 340 L80 300 L160 310 L240 250 L320 265 L400 190 L480 205 L560 130 L640 145 L720 70 L800 85"/>
+      <path d="M0 370 L80 350 L160 358 L240 330 L320 340 L400 305 L480 315 L560 275 L640 285 L720 240 L800 250" opacity=".5"/>
+    </g>
+    <g fill="#C08A2E">
+      <circle cx="240" cy="250" r="4"/><circle cx="400" cy="190" r="4"/><circle cx="560" cy="130" r="4"/><circle cx="720" cy="70" r="5"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">Personal Behaviour · Mindset · Business Growth</div>
+    <h1>ஒரு தொழில்முனைவோரின் பார்வையில்<br>சுய முன்னேற்ற வழிகாட்டி</h1>
+    <p class="lede">தொழிலில் வெற்றி என்பது தயாரிப்பால் மட்டும் வருவதில்லை — அது நிறுவனரின் தினசரி நடத்தை, மனநிலை, மற்றும் அவர் கட்டமைக்கும் அமைப்புகளால் (Systems) தீர்மானிக்கப்படுகிறது. இது 12 அத்தியாயங்கள் கொண்ட முழுமையான படிப்பு நூல்.</p>
+    <div class="hero-stats">
+      <div><b>12</b><span>அத்தியாயங்கள்</span></div>
+      <div><b>14</b><span>விளக்கப் படங்கள்</span></div>
+      <div><b>90</b><span>நாள் செயல் திட்டம்</span></div>
+      <div><b>1</b><span>சுய மதிப்பீட்டுக் கருவி</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- =============== HOW TO USE =============== -->
+<section class="chapter" id="intro">
+  <div class="ch-head">
+    <div class="ch-num">00</div>
+    <div><h2>இந்த நூலை எப்படிப் படிப்பது</h2>
+    <div class="ch-sub">HOW TO STUDY THIS BOOK</div></div>
+  </div>
+  <p>ஒவ்வொரு அத்தியாயமும் <b>கருத்து → விளக்கப்படம் → அட்டவணை → செயல் திட்டம்</b> என்ற ஒரே கட்டமைப்பைப் பின்பற்றுகிறது. ஒரே நாளில் முழுவதையும் படிக்க முயற்சிக்காதீர்கள்; வாரத்திற்கு ஒரு அத்தியாயம் என்ற வேகத்தில் படித்து, அந்த வாரமே செயல்படுத்துங்கள்.</p>
+  <figure>
+    <svg viewBox="0 0 720 130" role="img" aria-label="கற்றல் சுழற்சி">
+      <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#1F7A6B"/></marker></defs>
+      <g font-family="Noto Sans Tamil" font-size="13" text-anchor="middle">
+        <rect x="8" y="35" width="140" height="58" rx="10" fill="#0E2B33"/>
+        <text x="78" y="60" fill="#fff" font-size="14">படித்தல்</text><text x="78" y="79" fill="#C08A2E" font-size="10.5" font-family="IBM Plex Mono, Anek Tamil">READ</text>
+        <rect x="188" y="35" width="140" height="58" rx="10" fill="#1F7A6B"/>
+        <text x="258" y="60" fill="#fff" font-size="14">குறிப்பெடுத்தல்</text><text x="258" y="79" fill="#CFE6E1" font-size="10.5" font-family="IBM Plex Mono, Anek Tamil">NOTE</text>
+        <rect x="368" y="35" width="140" height="58" rx="10" fill="#C08A2E"/>
+        <text x="438" y="60" fill="#fff" font-size="14">செயல்படுத்தல்</text><text x="438" y="79" fill="#3B2A06" font-size="10.5" font-family="IBM Plex Mono, Anek Tamil">APPLY</text>
+        <rect x="548" y="35" width="140" height="58" rx="10" fill="#A8402F"/>
+        <text x="618" y="60" fill="#fff" font-size="14">மறுபரிசீலனை</text><text x="618" y="79" fill="#F6D9D3" font-size="10.5" font-family="IBM Plex Mono, Anek Tamil">REVIEW</text>
+      </g>
+      <g stroke="#1F7A6B" stroke-width="2" marker-end="url(#ar)" fill="none">
+        <path d="M150 64 H184"/><path d="M330 64 H364"/><path d="M510 64 H544"/>
+        <path d="M618 33 C618 14, 460 14, 400 14 M300 14 C180 14, 78 14, 78 31" stroke-dasharray="5 4"/>
+      </g>
+      <text x="350" y="18" font-family="IBM Plex Mono, Anek Tamil" font-size="9.5" fill="#3C5A63" text-anchor="middle">REPEAT WEEKLY</text>
+    </svg>
+    <figcaption><b>படம் 0.1</b> — கற்றல் சுழற்சி: படித்தது செயலாக மாறாதவரை அது அறிவு அல்ல, வெறும் தகவல்.</figcaption>
+  </figure>
+</section>
+
+<!-- =============== CH 1 =============== -->
+<section class="chapter" id="c1">
+  <div class="ch-head">
+    <div class="ch-num">01</div>
+    <div><h2>பிரம்மாண்டமான இலக்குகளும் முழுப் பொறுப்பேற்றலும்</h2>
+    <div class="ch-sub">BIG GOALS &amp; EXTREME OWNERSHIP</div></div>
+  </div>
+
+  <h3><span class="tag">1.1</span>10 மடங்கு சிந்தனை <span class="en">(The 10X Rule)</span></h3>
+  <p>கிராண்ட் கார்டன் (Grant Cardone) முன்வைத்த இக்கொள்கையின்படி, பெரும்பாலான மனிதர்கள் தோற்பது இலக்கு பெரிதாக இருப்பதால் அல்ல — இலக்கு <b>மிகச் சிறியதாக</b> இருப்பதாலும், அதற்குச் செலவிடும் முயற்சி <b>குறைவாக</b> இருப்பதாலும்தான். நீங்கள் நினைக்கும் இலக்கை 10 மடங்காக்குங்கள்; அதற்கான உழைப்பையும் 10 மடங்காக்குங்கள்.</p>
+  <figure>
+    <svg viewBox="0 0 720 250" role="img" aria-label="சாதாரண இலக்கு vs 10X இலக்கு">
+      <g font-family="Noto Sans Tamil" font-size="12">
+        <line x1="60" y1="200" x2="700" y2="200" stroke="#D8D2C4" stroke-width="2"/>
+        <line x1="60" y1="30" x2="60" y2="200" stroke="#D8D2C4" stroke-width="2"/>
+        <text x="52" y="204" text-anchor="end" font-size="10" fill="#3C5A63">0</text>
+        <text x="52" y="120" text-anchor="end" font-size="10" fill="#3C5A63">50%</text>
+        <text x="52" y="38" text-anchor="end" font-size="10" fill="#3C5A63">100%</text>
+
+        <rect x="120" y="140" width="90" height="60" fill="#A8402F" rx="4"/>
+        <text x="165" y="130" text-anchor="middle" fill="#A8402F" font-size="12">சிறிய இலக்கு</text>
+        <text x="165" y="175" text-anchor="middle" fill="#fff" font-size="13">₹50K</text>
+
+        <rect x="240" y="165" width="90" height="35" fill="#D9A79C" rx="4"/>
+        <text x="285" y="155" text-anchor="middle" fill="#A8402F" font-size="11">அடைந்தது</text>
+        <text x="285" y="189" text-anchor="middle" fill="#5C1F14" font-size="12">₹20K</text>
+
+        <rect x="430" y="45" width="90" height="155" fill="#1F7A6B" rx="4"/>
+        <text x="475" y="35" text-anchor="middle" fill="#1F7A6B" font-size="12">10X இலக்கு</text>
+        <text x="475" y="130" text-anchor="middle" fill="#fff" font-size="13">₹5L</text>
+
+        <rect x="550" y="105" width="90" height="95" fill="#7FC0B4" rx="4"/>
+        <text x="595" y="95" text-anchor="middle" fill="#1F7A6B" font-size="11">அடைந்தது</text>
+        <text x="595" y="160" text-anchor="middle" fill="#0E2B33" font-size="12">₹2L</text>
+
+        <text x="225" y="232" text-anchor="middle" font-size="11.5" fill="#3C5A63">சிறிய இலக்கு = சிறிய முயற்சி</text>
+        <text x="535" y="232" text-anchor="middle" font-size="11.5" fill="#3C5A63">பெரிய இலக்கு = 40% தவறினாலும் அதிக பலன்</text>
+        <line x1="370" y1="25" x2="370" y2="215" stroke="#D8D2C4" stroke-dasharray="4 4"/>
+      </g>
+    </svg>
+    <figcaption><b>படம் 1.1</b> — பெரிய இலக்கை 60% மட்டுமே அடைந்தாலும், சிறிய இலக்கை 100% அடைவதை விட அதிக முடிவு கிடைக்கும்.</figcaption>
+  </figure>
+
+  <table>
+    <tr><th>அம்சம்</th><th>SMART இலக்கு</th><th>10X இலக்கு</th></tr>
+    <tr><td>நோக்கம்</td><td>அடையக்கூடியது, பாதுகாப்பானது</td><td>திறனை விரிவாக்குவது</td></tr>
+    <tr><td>ஆபத்து</td><td>குறைவு</td><td>அதிகம், ஆனால் கற்றல் அதிகம்</td></tr>
+    <tr><td>எப்போது பயன்படுத்துவது</td><td>குறுகிய கால, தினசரி பணிகள்</td><td>ஆண்டு / வாழ்நாள் திசை</td></tr>
+  </table>
+  <div class="callout jade"><div class="lbl">சமநிலை</div><p>திசையை 10X-ல் நிர்ணயியுங்கள்; தினசரிப் பணிகளை SMART முறையில் பிரித்துக்கொள்ளுங்கள். இரண்டும் எதிரிகள் அல்ல — அடுக்குகள்.</p></div>
+
+  <h3><span class="tag">1.2</span>முழுப் பொறுப்பேற்றல் <span class="en">(Extreme Ownership)</span></h3>
+  <p>Jocko Willink மற்றும் Leif Babin ஆகியோரின் கருத்துப்படி, ஒரு தலைவர் தன் அணியின் ஒவ்வொரு தோல்விக்கும் முழுப் பொறுப்பேற்க வேண்டும். "சந்தை சரியில்லை", "பணியாளர் சரியில்லை" என்று குறை கூறும் ஒவ்வொரு முறையும், நீங்கள் அந்தப் பிரச்சினையைத் தீர்க்கும் அதிகாரத்தை உங்களிடமிருந்து பறித்து மற்றவரிடம் ஒப்படைக்கிறீர்கள்.</p>
+  <figure>
+    <svg viewBox="0 0 720 260" role="img" aria-label="குறை கூறும் சுழற்சி vs பொறுப்பேற்கும் சுழற்சி">
+      <defs><marker id="ar2" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#A8402F"/></marker>
+      <marker id="ar3" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#1F7A6B"/></marker></defs>
+      <g font-family="Noto Sans Tamil" font-size="11.5" text-anchor="middle">
+        <text x="175" y="20" fill="#A8402F" font-size="13" font-family="Anek Tamil" font-weight="700">குறை கூறும் சுழற்சி</text>
+        <circle cx="175" cy="140" r="88" fill="none" stroke="#A8402F" stroke-width="2" stroke-dasharray="6 5"/>
+        <g fill="#5C1F14">
+          <rect x="112" y="42" width="126" height="30" rx="7" fill="#F3DDD8"/><text x="175" y="62">பிரச்சினை வருகிறது</text>
+          <rect x="228" y="122" width="112" height="30" rx="7" fill="#F3DDD8"/><text x="284" y="142">மற்றவரைக் குறை</text>
+          <rect x="112" y="208" width="126" height="30" rx="7" fill="#F3DDD8"/><text x="175" y="228">தீர்வு இல்லை</text>
+          <rect x="12" y="122" width="112" height="30" rx="7" fill="#F3DDD8"/><text x="68" y="142">மீண்டும் நிகழும்</text>
+        </g>
+        <g stroke="#A8402F" stroke-width="1.8" fill="none" marker-end="url(#ar2)">
+          <path d="M240 66 A88 88 0 0 1 292 118"/><path d="M290 158 A88 88 0 0 1 240 212"/>
+          <path d="M110 214 A88 88 0 0 1 60 158"/><path d="M62 118 A88 88 0 0 1 110 64"/>
+        </g>
+
+        <text x="545" y="20" fill="#1F7A6B" font-size="13" font-family="Anek Tamil" font-weight="700">பொறுப்பேற்கும் சுழற்சி</text>
+        <circle cx="545" cy="140" r="88" fill="none" stroke="#1F7A6B" stroke-width="2"/>
+        <g fill="#0E3B34">
+          <rect x="482" y="42" width="126" height="30" rx="7" fill="#D6EBE7"/><text x="545" y="62">பிரச்சினை வருகிறது</text>
+          <rect x="598" y="122" width="118" height="30" rx="7" fill="#D6EBE7"/><text x="657" y="142">"என் பங்கு என்ன?"</text>
+          <rect x="482" y="208" width="126" height="30" rx="7" fill="#D6EBE7"/><text x="545" y="228">முறை மாற்றம்</text>
+          <rect x="382" y="122" width="112" height="30" rx="7" fill="#D6EBE7"/><text x="438" y="142">மீண்டும் நிகழாது</text>
+        </g>
+        <g stroke="#1F7A6B" stroke-width="1.8" fill="none" marker-end="url(#ar3)">
+          <path d="M610 66 A88 88 0 0 1 662 118"/><path d="M660 158 A88 88 0 0 1 610 212"/>
+          <path d="M480 214 A88 88 0 0 1 430 158"/><path d="M432 118 A88 88 0 0 1 480 64"/>
+        </g>
+      </g>
+    </svg>
+    <figcaption><b>படம் 1.2</b> — ஒரே பிரச்சினை, இரண்டு விதமான பதில்கள். இடதுபுறம் பிரச்சினை திரும்பத் திரும்ப வரும்; வலதுபுறம் அது ஒருமுறையே வரும்.</figcaption>
+  </figure>
+
+  <h3><span class="tag">1.3</span>ஆதிக்கம் செலுத்துதல் <span class="en">(Dominate, don't compete)</span></h3>
+  <p>சந்தையில் வெறும் "இன்னொரு விருப்பமாக" இருப்பதைத் தவிர்த்து, ஒரு குறிப்பிட்ட பிரிவில் (Niche) முதலிடம் பிடிக்க வேண்டும். "எல்லாருக்கும் எல்லாம்" என்பது யாருக்கும் ஒன்றுமில்லை என்பதற்குச் சமம்.</p>
+  <div class="callout"><div class="lbl">சிந்திக்க வேண்டிய கேள்வி</div><p>"என் நகரத்தில், என் துறையில், எந்த ஒரு விஷயத்தில் நான் <i>சந்தேகமின்றி</i> முதலிடத்தில் இருக்க முடியும்?" — அந்த ஒரு விஷயத்தில் ஆதிக்கம் செலுத்துங்கள்.</p></div>
+
+  <div class="callout jade"><div class="lbl">அத்தியாய செயல் திட்டம்</div>
+  <ol><li>அடுத்த 12 மாதங்களுக்கான ஒரு 10X இலக்கை எழுதுங்கள்.</li>
+  <li>கடந்த மாதத்தின் ஒரு தோல்வியை எடுத்து, அதில் <i>உங்கள்</i> பங்கு என்ன என்பதை மட்டும் எழுதுங்கள்.</li>
+  <li>உங்கள் "ஆதிக்கப் பிரிவை" (Niche) ஒரே வாக்கியத்தில் வரையறுங்கள்.</li></ol></div>
+</section>
+
+<!-- =============== CH 2 =============== -->
+<section class="chapter" id="c2">
+  <div class="ch-head">
+    <div class="ch-num">02</div>
+    <div><h2>தோற்றம், துணி மற்றும் தோரணை</h2>
+    <div class="ch-sub">APPEARANCE · TONE · DEMEANOR</div></div>
+  </div>
+  <p>"இடம், பொருள், ஏவல்" அறிந்திருப்பது மட்டும் போதாது. மற்றவர்கள் உங்களை மதிப்பிடுவது நீங்கள் <b>என்ன சொல்கிறீர்கள்</b> என்பதை விட, நீங்கள் <b>எப்படித் தெரிகிறீர்கள், எப்படிச் சொல்கிறீர்கள்</b> என்பதைக் கொண்டுதான். இம்மூன்றும் சேர்ந்து உங்கள் தனிப்பட்ட முத்திரையை (Personal Brand) உருவாக்குகின்றன.</p>
+
+  <figure>
+    <svg viewBox="0 0 720 300" role="img" aria-label="தோற்றம் தொனி தோரணை - மூன்று வட்டங்கள்">
+      <g font-family="Noto Sans Tamil" text-anchor="middle">
+        <circle cx="290" cy="115" r="95" fill="#1F7A6B" opacity=".28"/>
+        <circle cx="430" cy="115" r="95" fill="#C08A2E" opacity=".28"/>
+        <circle cx="360" cy="215" r="95" fill="#A8402F" opacity=".28"/>
+        <text x="248" y="78" font-size="14" fill="#0E2B33" font-family="Anek Tamil" font-weight="700">தோற்றம்</text>
+        <text x="248" y="95" font-size="10" fill="#3C5A63" font-family="IBM Plex Mono, Anek Tamil">APPEARANCE</text>
+        <text x="472" y="78" font-size="14" fill="#0E2B33" font-family="Anek Tamil" font-weight="700">தொனி</text>
+        <text x="472" y="95" font-size="10" fill="#3C5A63" font-family="IBM Plex Mono, Anek Tamil">TONE</text>
+        <text x="360" y="268" font-size="14" fill="#0E2B33" font-family="Anek Tamil" font-weight="700">தோரணை</text>
+        <text x="360" y="285" font-size="10" fill="#3C5A63" font-family="IBM Plex Mono, Anek Tamil">DEMEANOR</text>
+        <text x="360" y="150" font-size="13" fill="#0E2B33" font-family="Anek Tamil" font-weight="800">நம்பகத்</text>
+        <text x="360" y="170" font-size="13" fill="#0E2B33" font-family="Anek Tamil" font-weight="800">தன்மை</text>
+        <text x="360" y="186" font-size="9.5" fill="#0E2B33" font-family="IBM Plex Mono, Anek Tamil">TRUST</text>
+      </g>
+    </svg>
+    <figcaption><b>படம் 2.1</b> — மூன்றும் சந்திக்கும் இடத்தில்தான் நம்பகத்தன்மை பிறக்கிறது. ஒன்று குறைந்தாலும் மொத்த தாக்கம் பலவீனமாகும்.</figcaption>
+  </figure>
+
+  <h3><span class="tag">2.1</span>தோற்றம் <span class="en">(Appearance)</span></h3>
+  <p>நீங்கள் செல்லும் இடம், சந்திக்கும் நபர், எதிர்பார்க்கும் வாய்ப்பு — இவற்றை முன்கூட்டியே யோசித்து அதற்கேற்ப உடையைத் தேர்ந்தெடுங்கள். சிறந்த தோற்றம் என்பது விலை உயர்ந்த ஆடை அல்ல; அது <b>சுத்தம், நேர்த்தி, சூழலுக்கேற்ற பொருத்தம்</b> ஆகிய மூன்றின் கூட்டு.</p>
+  <div class="callout clay"><div class="lbl">தவிர்க்க வேண்டியது</div><p>உறவினர்களையோ சமூக ஊடகங்களையோ கவரும் நோக்கில் ஆடம்பரமாகச் செலவழிப்பது வணிக வளர்ச்சிக்கு எந்தப் பலனையும் தராது — மாறாக, அத்தியாயம் 05-ல் விவாதிக்கும் நிதி ஒழுக்கத்தைக் குலைக்கும்.</p></div>
+
+  <h3><span class="tag">2.2</span>பேசும் தொனி <span class="en">(Tone)</span></h3>
+  <p>உங்கள் தொனியில் பொறுமை, அறிவு, நிதானம் வெளிப்பட வேண்டும். வணிகப் பேச்சுவார்த்தையில் அவசரமாகப் பதிலளிப்பதை விட, <b>இரண்டு விநாடி இடைவெளி</b> விட்டுப் பேசுவது உங்களை மிகவும் நம்பகமானவராகக் காட்டும்.</p>
+  <table>
+    <tr><th>சூழல்</th><th>பலவீனமான தொனி</th><th>வலிமையான தொனி</th></tr>
+    <tr><td>விலை பேசும்போது</td><td>"கொஞ்சம் குறைக்கலாமா...?"</td><td>"இந்த விலையில் இதுதான் மதிப்பு. உங்கள் பட்ஜெட் என்ன?"</td></tr>
+    <tr><td>தவறு நேர்ந்தபோது</td><td>"அது என் தவறு இல்லை"</td><td>"இது நடந்துவிட்டது. தீர்வு இதோ."</td></tr>
+    <tr><td>தெரியாத கேள்விக்கு</td><td>ஏதோ ஊகித்துச் சொல்வது</td><td>"சரிபார்த்து நாளை பதில் சொல்கிறேன்"</td></tr>
+  </table>
+
+  <h3><span class="tag">2.3</span>தோரணை <span class="en">(Demeanor &amp; Body Language)</span></h3>
+  <p>பேசும்போது தேவையற்ற கை அசைவுகளும் முகபாவனைகளும் கேட்பவரின் கவனத்தைச் சிதறடிக்கும். நிதானமான, நிலையான உடல்மொழி கட்டுப்பாட்டையும் நம்பிக்கையையும் வெளிப்படுத்தும்.</p>
+  <div class="grid2">
+    <div class="card"><h4>வலுப்படுத்தும் பழக்கங்கள்</h4><ul><li>நேரான முதுகு, தளர்வான தோள்கள்</li><li>கண் தொடர்பு — 60% முதல் 70%</li><li>கைகளைத் தெரியும்படி வைத்தல்</li><li>பேச்சுக்கு இடையே அமைதியான இடைவெளி</li></ul></div>
+    <div class="card bad"><h4>பலவீனப்படுத்தும் பழக்கங்கள்</h4><ul><li>கால் ஆட்டுதல், பேனா சுழற்றுதல்</li><li>அடிக்கடி கடிகாரம்/மொபைல் பார்த்தல்</li><li>கைகளைக் கட்டிக்கொள்வது</li><li>ஒவ்வொரு வாக்கியமும் கேள்வியாக முடிவது</li></ul></div>
+  </div>
+</section>
+
+<!-- =============== CH 3 =============== -->
+<section class="chapter" id="c3">
+  <div class="ch-head">
+    <div class="ch-num">03</div>
+    <div><h2>உணர்ச்சி கட்டுப்பாடு மற்றும் தொடர் கற்றல்</h2>
+    <div class="ch-sub">EMOTIONAL REGULATION &amp; CONTINUOUS LEARNING</div></div>
+  </div>
+
+  <h3><span class="tag">3.1</span>கட்டுப்பாட்டு வட்டம் <span class="en">(Circle of Control)</span></h3>
+  <p>ஸ்டோயிக் தத்துவத்தின் அடிப்படைக் கருத்து இது. உங்கள் ஆற்றல் மட்டுப்படுத்தப்பட்டது — அதை நீங்கள் மாற்ற முடியாத விஷயங்களில் செலவிட்டால், மாற்றக்கூடிய விஷயங்களுக்கு எதுவும் மிச்சமிருக்காது.</p>
+  <figure>
+    <svg viewBox="0 0 720 320" role="img" aria-label="கட்டுப்பாட்டு வட்டம்">
+      <g font-family="Noto Sans Tamil" text-anchor="middle">
+        <circle cx="360" cy="160" r="150" fill="#F3DDD8"/>
+        <circle cx="360" cy="160" r="100" fill="#FAEBD0"/>
+        <circle cx="360" cy="160" r="52" fill="#1F7A6B"/>
+        <text x="360" y="155" fill="#fff" font-size="13" font-family="Anek Tamil" font-weight="700">கட்டுப்பாடு</text>
+        <text x="360" y="174" fill="#CFE6E1" font-size="9.5" font-family="IBM Plex Mono, Anek Tamil">CONTROL</text>
+        <text x="360" y="82" fill="#8A6410" font-size="12.5" font-family="Anek Tamil" font-weight="700">செல்வாக்கு · INFLUENCE</text>
+        <text x="360" y="38" fill="#A8402F" font-size="12.5" font-family="Anek Tamil" font-weight="700">கவலை · CONCERN</text>
+        <g font-size="11" fill="#0E2B33">
+          <text x="360" y="196">முயற்சி · அணுகுமுறை</text>
+          <text x="360" y="212" font-size="10.5">தினசரி பழக்கம்</text>
+        </g>
+        <g font-size="11" fill="#6B4E0C">
+          <text x="215" y="140">பணியாளர்</text><text x="215" y="157">உந்துதல்</text>
+          <text x="508" y="140">வாடிக்கையாளர்</text><text x="508" y="157">முடிவுகள்</text>
+        </g>
+        <g font-size="11" fill="#7C2F22">
+          <text x="150" y="245">பொருளாதாரம்</text>
+          <text x="575" y="245">போட்டியாளர் விலை</text>
+          <text x="360" y="296">அரசு கொள்கை · வானிலை · மற்றவர் கருத்து</text>
+        </g>
+      </g>
+    </svg>
+    <figcaption><b>படம் 3.1</b> — ஆற்றலின் 80% ஐ உள் வட்டத்தில் செலவிடுங்கள். வெளி வட்டத்தில் செலவிடும் ஒவ்வொரு நிமிடமும் வீண்.</figcaption>
+  </figure>
+
+  <h3><span class="tag">3.2</span>கற்றலில் ஆர்வம் <span class="en">(Curiosity)</span></h3>
+  <p>"இது எப்படி இயங்குகிறது?" என்ற கேள்வியை இழக்காதீர்கள். ஒரு விஷயம் எப்படி இயங்குகிறது என்று புரிந்தவர்கள்தான் அதை மேம்படுத்த முடியும். வெற்றிபெற்ற தொழில்முனைவோர் அனைவரும் <b>மாணவர் மனநிலையை</b> (Beginner's Mind) தக்கவைத்திருப்பவர்கள்.</p>
+
+  <h3><span class="tag">3.3</span>சுய விழிப்புணர்வு <span class="en">(Self-Awareness)</span></h3>
+  <p>எந்தெந்த சூழல்கள், நபர்கள், பழக்கங்கள் உங்களுக்குத் தேவையற்ற பதற்றத்தையோ கவனச் சிதறலையோ தருகின்றன என்பதைக் கண்டறிந்து, திட்டமிட்டு அவற்றை விலக்குங்கள். <b>தூண்டுதல் → உணர்ச்சி → செயல்</b> என்ற சங்கிலியில், தூண்டுதலுக்கும் செயலுக்கும் இடையே ஒரு இடைவெளியை உருவாக்குவதே முதிர்ச்சி.</p>
+  <figure>
+    <svg viewBox="0 0 720 110" role="img" aria-label="தூண்டுதல் இடைவெளி பதில்">
+      <defs><marker id="ar4" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#0E2B33"/></marker></defs>
+      <g font-family="Noto Sans Tamil" font-size="12.5" text-anchor="middle">
+        <rect x="20" y="30" width="130" height="52" rx="9" fill="#A8402F"/><text x="85" y="52" fill="#fff">தூண்டுதல்</text><text x="85" y="70" fill="#F6D9D3" font-size="10" font-family="IBM Plex Mono, Anek Tamil">TRIGGER</text>
+        <rect x="230" y="30" width="180" height="52" rx="9" fill="#C08A2E" stroke="#8A6410" stroke-width="2" stroke-dasharray="5 4"/>
+        <text x="320" y="52" fill="#fff">இடைவெளி · மூச்சு</text><text x="320" y="70" fill="#3B2A06" font-size="10" font-family="IBM Plex Mono, Anek Tamil">THE PAUSE</text>
+        <rect x="490" y="30" width="130" height="52" rx="9" fill="#1F7A6B"/><text x="555" y="52" fill="#fff">தேர்ந்த பதில்</text><text x="555" y="70" fill="#CFE6E1" font-size="10" font-family="IBM Plex Mono, Anek Tamil">RESPONSE</text>
+        <g stroke="#0E2B33" stroke-width="2" marker-end="url(#ar4)" fill="none"><path d="M152 56 H226"/><path d="M412 56 H486"/></g>
+        <text x="320" y="20" font-size="10.5" fill="#3C5A63" font-family="IBM Plex Mono, Anek Tamil">இங்குதான் உங்கள் சுதந்திரம் இருக்கிறது</text>
+      </g>
+    </svg>
+    <figcaption><b>படம் 3.2</b> — உடனடி எதிர்வினை (React) அல்ல, தேர்ந்தெடுத்த பதில் (Respond). இடைவெளியே தொழில்முறைத் தன்மை.</figcaption>
+  </figure>
+</section>
+
+<!-- =============== CH 4 =============== -->
+<section class="chapter" id="c4">
+  <div class="ch-head">
+    <div class="ch-num">04</div>
+    <div><h2>நேர மேலாண்மை மற்றும் உற்பத்தித்திறன்</h2>
+    <div class="ch-sub">TIME MANAGEMENT &amp; PRODUCTIVITY</div></div>
+  </div>
+  <p>நேரம் மட்டுமே திரும்பப் பெற முடியாத மூலதனம். ஒரு தொழிலதிபரின் மிகப்பெரிய ஆபத்து — <b>அவசரமான ஆனால் முக்கியமில்லாத</b> பணிகளில் நாள் முழுவதும் மூழ்கி, முக்கியமான வளர்ச்சிப் பணிகளை ஒத்திப்போடுவது.</p>
+
+  <h3><span class="tag">4.1</span>ஐசன்ஹோவர் அணி <span class="en">(Eisenhower Matrix)</span></h3>
+  <figure>
+    <svg viewBox="0 0 720 380" role="img" aria-label="ஐசன்ஹோவர் அணி">
+      <g font-family="Noto Sans Tamil">
+        <text x="360" y="18" text-anchor="middle" font-size="11" font-family="IBM Plex Mono, Anek Tamil" fill="#3C5A63">அவசரம் · URGENT →</text>
+        <text x="20" y="200" text-anchor="middle" font-size="11" font-family="IBM Plex Mono, Anek Tamil" fill="#3C5A63" transform="rotate(-90 20 200)">முக்கியம் · IMPORTANT →</text>
+
+        <rect x="60" y="35" width="310" height="155" rx="10" fill="#A8402F"/>
+        <text x="80" y="62" fill="#fff" font-size="15" font-family="Anek Tamil" font-weight="700">1 · செய் இப்போதே</text>
+        <text x="80" y="82" fill="#F6D9D3" font-size="10.5" font-family="IBM Plex Mono, Anek Tamil">DO — நெருக்கடிகள்</text>
+        <g fill="#FBEBE7" font-size="12"><text x="80" y="108">· வாடிக்கையாளர் புகார்</text><text x="80" y="130">· இன்று முடிய வேண்டிய ஆர்டர்</text><text x="80" y="152">· இயந்திரம் பழுது</text><text x="80" y="174">· வரி கடைசி தேதி</text></g>
+
+        <rect x="380" y="35" width="310" height="155" rx="10" fill="#1F7A6B"/>
+        <text x="400" y="62" fill="#fff" font-size="15" font-family="Anek Tamil" font-weight="700">2 · திட்டமிடு ★</text>
+        <text x="400" y="82" fill="#CFE6E1" font-size="10.5" font-family="IBM Plex Mono, Anek Tamil">SCHEDULE — வளர்ச்சி</text>
+        <g fill="#E3F1EE" font-size="12"><text x="400" y="108">· SOP எழுதுதல்</text><text x="400" y="130">· புதிய திறன் கற்றல்</text><text x="400" y="152">· உறவுகள் / நெட்வொர்க்</text><text x="400" y="174">· உடல் ஆரோக்கியம்</text></g>
+
+        <rect x="60" y="200" width="310" height="155" rx="10" fill="#C08A2E"/>
+        <text x="80" y="227" fill="#fff" font-size="15" font-family="Anek Tamil" font-weight="700">3 · ஒப்படை</text>
+        <text x="80" y="247" fill="#3B2A06" font-size="10.5" font-family="IBM Plex Mono, Anek Tamil">DELEGATE</text>
+        <g fill="#FBF0DA" font-size="12"><text x="80" y="273">· வழக்கமான மின்னஞ்சல்</text><text x="80" y="295">· தரவு பதிவு</text><text x="80" y="317">· சில கூட்டங்கள்</text><text x="80" y="339">· பில்லிங் / கணக்கு</text></g>
+
+        <rect x="380" y="200" width="310" height="155" rx="10" fill="#7C8A8E"/>
+        <text x="400" y="227" fill="#fff" font-size="15" font-family="Anek Tamil" font-weight="700">4 · நீக்கு</text>
+        <text x="400" y="247" fill="#E3E8E9" font-size="10.5" font-family="IBM Plex Mono, Anek Tamil">DELETE</text>
+        <g fill="#F0F3F4" font-size="12"><text x="400" y="273">· நோக்கமற்ற சமூக ஊடகம்</text><text x="400" y="295">· தேவையற்ற வாட்ஸ்அப் குழு</text><text x="400" y="317">· கிசுகிசு உரையாடல்</text><text x="400" y="339">· தேவையற்ற செய்திகள்</text></g>
+      </g>
+    </svg>
+    <figcaption><b>படம் 4.1</b> — வெற்றியின் ரகசியம் கட்டம் 2-ல் இருக்கிறது. கட்டம் 2-ஐ புறக்கணித்தால், அவை நாளை கட்டம் 1 நெருக்கடிகளாக மாறும்.</figcaption>
+  </figure>
+
+  <h3><span class="tag">4.2</span>80/20 விதி <span class="en">(Pareto Principle)</span></h3>
+  <p>உங்கள் லாபத்தில் 80% ஆனது, உங்கள் வாடிக்கையாளர்களில் 20% பேரிடமிருந்தும், உங்கள் தயாரிப்புகளில் 20%-லிருந்தும் வருகிறது. அந்த 20%-ஐ அடையாளம் கண்டு, அதில் இரட்டிப்பு கவனம் செலுத்துங்கள்.</p>
+  <figure>
+    <svg viewBox="0 0 720 200" role="img" aria-label="80/20 விதி">
+      <g font-family="Noto Sans Tamil" font-size="12">
+        <text x="60" y="40" font-size="13" fill="#0E2B33">முயற்சி / வாடிக்கையாளர்</text>
+        <rect x="60" y="52" width="120" height="40" fill="#1F7A6B" rx="5"/><text x="120" y="78" fill="#fff" text-anchor="middle" font-size="14">20%</text>
+        <rect x="180" y="52" width="480" height="40" fill="#D8D2C4" rx="5"/><text x="420" y="78" fill="#3C5A63" text-anchor="middle" font-size="14">80%</text>
+
+        <text x="60" y="130" font-size="13" fill="#0E2B33">முடிவு / லாபம்</text>
+        <rect x="60" y="142" width="480" height="40" fill="#1F7A6B" rx="5"/><text x="300" y="168" fill="#fff" text-anchor="middle" font-size="14">80%</text>
+        <rect x="540" y="142" width="120" height="40" fill="#D8D2C4" rx="5"/><text x="600" y="168" fill="#3C5A63" text-anchor="middle" font-size="14">20%</text>
+        <line x1="180" y1="96" x2="540" y2="138" stroke="#C08A2E" stroke-width="2" stroke-dasharray="4 4"/>
+        <line x1="60" y1="96" x2="60" y2="138" stroke="#C08A2E" stroke-width="2" stroke-dasharray="4 4"/>
+      </g>
+    </svg>
+    <figcaption><b>படம் 4.2</b> — சிறிய உள்ளீடு, பெரிய வெளியீடு. உங்கள் "முக்கிய 20%" எது என்று தெரியாவிட்டால், நீங்கள் ஊகத்தில் வேலை செய்கிறீர்கள்.</figcaption>
+  </figure>
+  <div class="callout jade"><div class="lbl">நடைமுறை</div><p>கடந்த 12 மாத விற்பனையை வாடிக்கையாளர் வாரியாக வரிசைப்படுத்துங்கள். மேல் 20% பட்டியலை எழுதி, அவர்களுக்கு மட்டும் ஒரு தனிச் சேவைத் திட்டம் உருவாக்குங்கள்.</p></div>
+
+  <h3><span class="tag">4.3</span>நேரத் தொகுப்பு <span class="en">(Time Blocking &amp; Deep Work)</span></h3>
+  <p>நாளின் மிகச் சிறந்த 2–3 மணி நேரத்தை (பெரும்பாலோருக்கு காலை) ஆழ்ந்த கவனம் தேவைப்படும் ஒரே ஒரு பணிக்கு ஒதுக்குங்கள் — மொபைல் அமைதி நிலையில், கதவு மூடி. மீதி நேரத்தில் கூட்டங்கள், அழைப்புகள், நிர்வாகப் பணிகள்.</p>
+</section>
+
+<!-- =============== CH 5 =============== -->
+<section class="chapter" id="c5">
+  <div class="ch-head">
+    <div class="ch-num">05</div>
+    <div><h2>நிதி மேலாண்மை</h2>
+    <div class="ch-sub">FINANCIAL DISCIPLINE &amp; CASH FLOW</div></div>
+  </div>
+  <p>பல தொழில்கள் லாபமின்மையால் அல்ல, <b>பணப்புழக்க நெருக்கடியால்</b> (Cash Flow) மூடப்படுகின்றன. லாபம் என்பது கருத்து; பணப்புழக்கம் என்பது உண்மை.</p>
+
+  <h3><span class="tag">5.1</span>வருமானப் பங்கீடு <span class="en">(Income Allocation)</span></h3>
+  <figure>
+    <svg viewBox="0 0 720 280" role="img" aria-label="வருமான பங்கீடு டோனட் விளக்கப்படம்">
+      <g font-family="Noto Sans Tamil">
+        <g transform="translate(190,140)">
+          <circle r="95" fill="none" stroke="#1F7A6B" stroke-width="46" stroke-dasharray="298 299" transform="rotate(-90)"/>
+          <circle r="95" fill="none" stroke="#C08A2E" stroke-width="46" stroke-dasharray="119 478" transform="rotate(90)"/>
+          <circle r="95" fill="none" stroke="#A8402F" stroke-width="46" stroke-dasharray="90 507" transform="rotate(162)"/>
+          <circle r="95" fill="none" stroke="#7C8A8E" stroke-width="46" stroke-dasharray="90 507" transform="rotate(216)"/>
+          <text y="-6" text-anchor="middle" font-size="15" font-family="Anek Tamil" font-weight="800" fill="#0E2B33">மாத</text>
+          <text y="14" text-anchor="middle" font-size="15" font-family="Anek Tamil" font-weight="800" fill="#0E2B33">வருமானம்</text>
+        </g>
+        <g font-size="13" fill="#0E2B33">
+          <rect x="360" y="42" width="16" height="16" rx="4" fill="#1F7A6B"/><text x="386" y="55">50% — இயக்கச் செலவுகள் <tspan font-size="11" fill="#3C5A63">(Operations)</tspan></text>
+          <rect x="360" y="92" width="16" height="16" rx="4" fill="#C08A2E"/><text x="386" y="105">20% — முதலீடு <tspan font-size="11" fill="#3C5A63">(Investment)</tspan></text>
+          <rect x="360" y="142" width="16" height="16" rx="4" fill="#A8402F"/><text x="386" y="155">15% — அவசரகால நிதி <tspan font-size="11" fill="#3C5A63">(Emergency)</tspan></text>
+          <rect x="360" y="192" width="16" height="16" rx="4" fill="#7C8A8E"/><text x="386" y="205">15% — தனிப்பட்ட செலவு <tspan font-size="11" fill="#3C5A63">(Personal)</tspan></text>
+          <text x="360" y="245" font-size="11.5" fill="#3C5A63" font-family="IBM Plex Mono, Anek Tamil">* உங்கள் தொழிலுக்கேற்ப சரிசெய்யவும்</text>
+        </g>
+      </g>
+    </svg>
+    <figcaption><b>படம் 5.1</b> — வருமானம் வந்ததும் <i>முதலில்</i> பங்கிடுங்கள்; மீதியில் செலவழியுங்கள். மீதத்தை சேமிக்க முயன்றால் மீதமே இருக்காது.</figcaption>
+  </figure>
+
+  <h3><span class="tag">5.2</span>அவசரகால நிதி &amp; காப்பீடு</h3>
+  <ul>
+    <li><b>அவசரகால நிதி:</b> குறைந்தது 6 மாத நிலையான செலவுகளுக்கான தொகை, உடனடியாக எடுக்கக்கூடிய கணக்கில். இது முதலீடு அல்ல — இது <i>தூக்கத்திற்கான</i> பணம்.</li>
+    <li><b>மருத்துவக் காப்பீடு:</b> ஒரு மருத்துவ நெருக்கடி 10 வருட சேமிப்பை அழிக்கும். குடும்பம் முழுவதற்கும் Family Floater பாலிசி அவசியம்.</li>
+    <li><b>கால காப்பீடு (Term Insurance):</b> உங்களைச் சார்ந்திருப்பவர்கள் இருந்தால், ஆண்டு வருமானத்தின் 10–15 மடங்கு கவரேஜ்.</li>
+    <li><b>தனி கணக்குகள்:</b> தொழில் கணக்கும் தனிப்பட்ட கணக்கும் ஒருபோதும் கலக்கக் கூடாது.</li>
+  </ul>
+
+  <h3><span class="tag">5.3</span>அறிந்திருக்க வேண்டிய நிதி எண்கள்</h3>
+  <table>
+    <tr><th>எண்</th><th>அர்த்தம்</th><th>ஏன் முக்கியம்</th></tr>
+    <tr><td>Gross Margin</td><td>விற்பனை − நேரடி செலவு</td><td>தயாரிப்பு உண்மையில் லாபகரமா என்பதைக் காட்டும்</td></tr>
+    <tr><td>Break-even</td><td>நஷ்டமும் இல்லாத, லாபமும் இல்லாத விற்பனை அளவு</td><td>மாதம் குறைந்தபட்சம் எவ்வளவு விற்க வேண்டும்</td></tr>
+    <tr><td>Runway</td><td>தற்போதைய பணம் ÷ மாதச் செலவு</td><td>வருமானம் நின்றால் எத்தனை மாதம் தாக்குப்பிடிக்கலாம்</td></tr>
+    <tr><td>Receivables Days</td><td>பணம் வசூலாக ஆகும் சராசரி நாட்கள்</td><td>பணப்புழக்க நெருக்கடியின் முதன்மைக் காரணம்</td></tr>
+  </table>
+</section>
+
+<!-- =============== CH 6 =============== -->
+<section class="chapter" id="c6">
+  <div class="ch-head">
+    <div class="ch-num">06</div>
+    <div><h2>சிஸ்டம்ஸ், SOP மற்றும் குழு உருவாக்கம்</h2>
+    <div class="ch-sub">SYSTEMS · SOPs · DELEGATION</div></div>
+  </div>
+  <p>உங்கள் தொழில் உங்களை மட்டுமே சார்ந்து இயங்கினால், நீங்கள் ஒரு தொழிலை நடத்தவில்லை — நீங்கள் ஒரு வேலையைச் செய்கிறீர்கள். உண்மையான தொழில் என்பது <b>உங்கள் இருப்பு இல்லாமலும் இயங்கக்கூடிய அமைப்பு</b>.</p>
+
+  <h3><span class="tag">6.1</span>SOP உருவாக்கும் பாதை</h3>
+  <figure>
+    <svg viewBox="0 0 720 210" role="img" aria-label="SOP உருவாக்கும் ஓட்டப்படம்">
+      <defs><marker id="ar5" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#1F7A6B"/></marker></defs>
+      <g font-family="Noto Sans Tamil" font-size="12" text-anchor="middle">
+        <g>
+          <rect x="10" y="70" width="120" height="62" rx="10" fill="#0E2B33"/>
+          <text x="70" y="92" fill="#fff" font-size="12.5">பணியைப்</text><text x="70" y="108" fill="#fff" font-size="12.5">பட்டியலிடு</text>
+          <text x="70" y="124" fill="#C08A2E" font-size="9" font-family="IBM Plex Mono, Anek Tamil">LIST</text>
+        </g>
+        <g>
+          <rect x="155" y="70" width="120" height="62" rx="10" fill="#17565C"/>
+          <text x="215" y="92" fill="#fff" font-size="12.5">படிநிலைகளை</text><text x="215" y="108" fill="#fff" font-size="12.5">எழுது</text>
+          <text x="215" y="124" fill="#9FD6CE" font-size="9" font-family="IBM Plex Mono, Anek Tamil">DOCUMENT</text>
+        </g>
+        <g>
+          <rect x="300" y="70" width="120" height="62" rx="10" fill="#1F7A6B"/>
+          <text x="360" y="92" fill="#fff" font-size="12.5">ஒருவரிடம்</text><text x="360" y="108" fill="#fff" font-size="12.5">சோதி</text>
+          <text x="360" y="124" fill="#CFE6E1" font-size="9" font-family="IBM Plex Mono, Anek Tamil">TEST</text>
+        </g>
+        <g>
+          <rect x="445" y="70" width="120" height="62" rx="10" fill="#C08A2E"/>
+          <text x="505" y="92" fill="#fff" font-size="12.5">குறைகளைச்</text><text x="505" y="108" fill="#fff" font-size="12.5">சரிசெய்</text>
+          <text x="505" y="124" fill="#3B2A06" font-size="9" font-family="IBM Plex Mono, Anek Tamil">REFINE</text>
+        </g>
+        <g>
+          <rect x="590" y="70" width="120" height="62" rx="10" fill="#A8402F"/>
+          <text x="650" y="92" fill="#fff" font-size="12.5">முழுமையாக</text><text x="650" y="108" fill="#fff" font-size="12.5">ஒப்படை</text>
+          <text x="650" y="124" fill="#F6D9D3" font-size="9" font-family="IBM Plex Mono, Anek Tamil">HAND OVER</text>
+        </g>
+        <g stroke="#1F7A6B" stroke-width="2" fill="none" marker-end="url(#ar5)">
+          <path d="M132 101 H151"/><path d="M277 101 H296"/><path d="M422 101 H441"/><path d="M567 101 H586"/>
+          <path d="M505 68 C505 30, 360 30, 360 66" stroke-dasharray="5 4"/>
+        </g>
+        <text x="432" y="22" font-size="10" fill="#3C5A63" font-family="IBM Plex Mono, Anek Tamil">தேவைப்பட்டால் மீண்டும் சோதி</text>
+        <text x="360" y="175" font-size="11.5" fill="#3C5A63">ஒரு SOP நன்றாக இருக்கிறதா? — புதிய நபர் அதை மட்டும் படித்து</text>
+        <text x="360" y="193" font-size="11.5" fill="#3C5A63">பணியை முடிக்க முடிந்தால், அது நல்ல SOP.</text>
+      </g>
+    </svg>
+    <figcaption><b>படம் 6.1</b> — SOP என்பது ஒருமுறை எழுதி முடிப்பது அல்ல; அது தொடர்ந்து செம்மைப்படுத்தப்படும் உயிருள்ள ஆவணம்.</figcaption>
+  </figure>
+
+  <h3><span class="tag">6.2</span>பொறுப்புப் பகிர்வு அணி <span class="en">(Delegation Matrix)</span></h3>
+  <figure>
+    <svg viewBox="0 0 720 330" role="img" aria-label="பொறுப்புப் பகிர்வு அணி">
+      <g font-family="Noto Sans Tamil">
+        <text x="360" y="16" text-anchor="middle" font-size="11" font-family="IBM Plex Mono, Anek Tamil" fill="#3C5A63">உங்கள் திறமை · YOUR SKILL →</text>
+        <text x="18" y="175" text-anchor="middle" font-size="11" font-family="IBM Plex Mono, Anek Tamil" fill="#3C5A63" transform="rotate(-90 18 175)">விருப்பம் · ENJOYMENT →</text>
+        <rect x="55" y="32" width="300" height="130" rx="10" fill="#C08A2E" opacity=".9"/>
+        <text x="75" y="60" fill="#fff" font-size="14" font-family="Anek Tamil" font-weight="700">பயிற்சி அளியுங்கள்</text>
+        <text x="75" y="84" fill="#FBF0DA" font-size="12">விருப்பம் உண்டு, திறமை குறைவு —</text>
+        <text x="75" y="104" fill="#FBF0DA" font-size="12">கற்றுக்கொள்ளுங்கள் அல்லது</text>
+        <text x="75" y="124" fill="#FBF0DA" font-size="12">ஒரு வழிகாட்டியைத் தேடுங்கள்.</text>
+        <text x="75" y="148" fill="#3B2A06" font-size="10" font-family="IBM Plex Mono, Anek Tamil">TRAIN / LEARN</text>
+
+        <rect x="365" y="32" width="300" height="130" rx="10" fill="#1F7A6B"/>
+        <text x="385" y="60" fill="#fff" font-size="14" font-family="Anek Tamil" font-weight="700">★ இங்கேயே இருங்கள்</text>
+        <text x="385" y="84" fill="#D6EBE7" font-size="12">உங்கள் தனித்திறன் மண்டலம்.</text>
+        <text x="385" y="104" fill="#D6EBE7" font-size="12">நேரத்தின் 60–70% இங்கு</text>
+        <text x="385" y="124" fill="#D6EBE7" font-size="12">செலவிட வேண்டும்.</text>
+        <text x="385" y="148" fill="#CFE6E1" font-size="10" font-family="IBM Plex Mono, Anek Tamil">ZONE OF GENIUS</text>
+
+        <rect x="55" y="172" width="300" height="130" rx="10" fill="#A8402F"/>
+        <text x="75" y="200" fill="#fff" font-size="14" font-family="Anek Tamil" font-weight="700">உடனே ஒப்படையுங்கள்</text>
+        <text x="75" y="224" fill="#F6D9D3" font-size="12">விருப்பமும் இல்லை, திறமையும்</text>
+        <text x="75" y="244" fill="#F6D9D3" font-size="12">இல்லை. இதுவே முதல்</text>
+        <text x="75" y="264" fill="#F6D9D3" font-size="12">ஒப்படைப்புப் பட்டியல்.</text>
+        <text x="75" y="288" fill="#F6D9D3" font-size="10" font-family="IBM Plex Mono, Anek Tamil">DELEGATE FIRST</text>
+
+        <rect x="365" y="172" width="300" height="130" rx="10" fill="#7C8A8E"/>
+        <text x="385" y="200" fill="#fff" font-size="14" font-family="Anek Tamil" font-weight="700">படிப்படியாக விடுங்கள்</text>
+        <text x="385" y="224" fill="#F0F3F4" font-size="12">திறமை உண்டு, ஆனால் விருப்பம்</text>
+        <text x="385" y="244" fill="#F0F3F4" font-size="12">இல்லை — இதுவே பலரை</text>
+        <text x="385" y="264" fill="#F0F3F4" font-size="12">சிக்கவைக்கும் பொறி.</text>
+        <text x="385" y="288" fill="#F0F3F4" font-size="10" font-family="IBM Plex Mono, Anek Tamil">TRAIN A REPLACEMENT</text>
+      </g>
+    </svg>
+    <figcaption><b>படம் 6.2</b> — "என்னை விட நன்றாக யாரும் செய்ய மாட்டார்கள்" என்பது வளர்ச்சியைத் தடுக்கும் மிகப்பெரிய நம்பிக்கை. 80% தரத்தில் வேறு யாரோ செய்தால் போதும்.</figcaption>
+  </figure>
+
+  <div class="callout"><div class="lbl">ஒப்படைப்பின் 5 படிகள்</div><p>1. முடிவு என்ன என்பதைத் தெளிவாகச் சொல்லுங்கள் · 2. எல்லைகளையும் பட்ஜெட்டையும் வரையறுங்கள் · 3. SOP-ஐக் கொடுங்கள் · 4. சரிபார்க்கும் தேதியை நிர்ணயியுங்கள் · 5. முறையை அல்ல, முடிவை மட்டும் மதிப்பிடுங்கள்.</p></div>
+</section>
+
+<!-- =============== CH 7 =============== -->
+<section class="chapter" id="c7">
+  <div class="ch-head">
+    <div class="ch-num">07</div>
+    <div><h2>விற்பனை, வாடிக்கையாளர் மற்றும் மார்க்கெட்டிங்</h2>
+    <div class="ch-sub">SALES · CUSTOMERS · MARKETING</div></div>
+  </div>
+  <p>எத்தனை சிறந்த தயாரிப்பாக இருந்தாலும், விற்பனை இல்லாமல் தொழில் இல்லை. விற்பனை என்பது மற்றவரை வற்புறுத்துவது அல்ல — <b>சரியான நபருக்கு சரியான தீர்வைத் தெளிவாக விளக்குவது</b>.</p>
+
+  <h3><span class="tag">7.1</span>விற்பனைப் புனல் <span class="en">(Sales Funnel)</span></h3>
+  <figure>
+    <svg viewBox="0 0 720 300" role="img" aria-label="விற்பனைப் புனல்">
+      <g font-family="Noto Sans Tamil" text-anchor="middle">
+        <polygon points="30,30 450,30 415,85 65,85" fill="#0E2B33"/>
+        <text x="240" y="62" fill="#fff" font-size="14">கவனம் · AWARENESS</text>
+        <polygon points="66,90 414,90 383,145 97,145" fill="#17565C"/>
+        <text x="240" y="122" fill="#fff" font-size="14">ஆர்வம் · INTEREST</text>
+        <polygon points="98,150 382,150 351,205 129,205" fill="#1F7A6B"/>
+        <text x="240" y="182" fill="#fff" font-size="13.5">பரிசீலனை · CONSIDER</text>
+        <polygon points="130,210 350,210 320,265 160,265" fill="#C08A2E"/>
+        <text x="240" y="242" fill="#fff" font-size="13.5">வாங்குதல் · BUY</text>
+        <g font-family="Noto Sans Tamil" font-size="12" text-anchor="start" fill="#3C5A63">
+          <text x="500" y="55">1,000 பேர் பார்க்கிறார்கள்</text>
+          <text x="500" y="115">200 பேர் விசாரிக்கிறார்கள்</text>
+          <text x="500" y="175">50 பேர் விலை கேட்கிறார்கள்</text>
+          <text x="500" y="235">10 பேர் வாங்குகிறார்கள்</text>
+          <text x="500" y="278" font-size="11" font-family="IBM Plex Mono, Anek Tamil" fill="#A8402F">CONVERSION 1%</text>
+        </g>
+        <line x1="475" y1="20" x2="475" y2="285" stroke="#D8D2C4" stroke-dasharray="4 4"/>
+      </g>
+    </svg>
+    <figcaption><b>படம் 7.1</b> — எந்தப் படியில் அதிக பேர் விலகுகிறார்கள் என்பதை அளவிடுங்கள். அந்த ஒரு படியைச் சரிசெய்தால் மொத்த விற்பனை பெருகும்.</figcaption>
+  </figure>
+
+  <h3><span class="tag">7.2</span>CAC மற்றும் LTV</h3>
+  <p>ஒரு புதிய வாடிக்கையாளரைப் பெற ஆகும் செலவு <b>CAC</b> (Customer Acquisition Cost); அந்த வாடிக்கையாளர் தன் முழு உறவுக் காலத்தில் தரும் மொத்த லாபம் <b>LTV</b> (Lifetime Value). ஆரோக்கியமான தொழிலில் LTV ஆனது CAC-ஐ விட குறைந்தது <b>3 மடங்கு</b> இருக்க வேண்டும்.</p>
+  <div class="callout jade"><div class="lbl">எளிய கணக்கு</div><p>விளம்பரத்திற்கு ₹10,000 செலவழித்து 10 வாடிக்கையாளர்கள் கிடைத்தால், CAC = ₹1,000. ஒரு வாடிக்கையாளர் ஆண்டுக்கு ₹1,500 லாபம் தந்து 3 ஆண்டுகள் தங்கினால், LTV = ₹4,500. விகிதம் 4.5:1 — ஆரோக்கியமானது.</p></div>
+
+  <h3><span class="tag">7.3</span>தக்கவைப்பு &amp; பரிந்துரை <span class="en">(Retention &amp; Referral)</span></h3>
+  <p>இருக்கும் வாடிக்கையாளரை தக்கவைப்பது, புதியவரைப் பெறுவதை விட <b>5–7 மடங்கு மலிவானது</b>. விற்பனைக்குப் பிந்தைய சேவை, சரியான நேரத்தில் பதிலளிப்பது, மற்றும் தானாகக் கேட்கும் ஒரு பரிந்துரை — இவை மூன்றும் இலவச மார்க்கெட்டிங்.</p>
+</section>
+
+<!-- =============== CH 8 =============== -->
+<section class="chapter" id="c8">
+  <div class="ch-head">
+    <div class="ch-num">08</div>
+    <div><h2>தோல்விகளை முதலீடாக மாற்றுதல்</h2>
+    <div class="ch-sub">TURNING LOSSES INTO INVESTMENTS</div></div>
+  </div>
+
+  <h3><span class="tag">8.1</span>கல்விக் கட்டணம் மனநிலை <span class="en">(Tuition Fee Mindset)</span></h3>
+  <p>தொழிலில் ஏற்படும் பெரிய பண இழப்பை ஒரு தோல்வியாகப் பார்க்காமல், ஒரு முக்கியமான பாடத்தைக் கற்க நீங்கள் செலுத்திய <b>கல்விக் கட்டணமாக</b> எண்ணுங்கள். ஆனால் ஒரு நிபந்தனை: <i>கட்டணம் செலுத்தியும் பாடம் கற்காவிட்டால், அது வெறும் இழப்புதான்.</i></p>
+  <figure>
+    <svg viewBox="0 0 720 250" role="img" aria-label="தோல்வியிலிருந்து கற்றல் சுழற்சி">
+      <defs><marker id="ar6" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#C08A2E"/></marker></defs>
+      <g font-family="Noto Sans Tamil" font-size="12" text-anchor="middle">
+        <circle cx="360" cy="125" r="98" fill="none" stroke="#C08A2E" stroke-width="2"/>
+        <g>
+          <rect x="285" y="8" width="150" height="46" rx="9" fill="#A8402F"/>
+          <text x="360" y="28" fill="#fff">1 · இழப்பு நிகழ்கிறது</text><text x="360" y="45" fill="#F6D9D3" font-size="9.5" font-family="IBM Plex Mono, Anek Tamil">THE LOSS</text>
+        </g>
+        <g>
+          <rect x="500" y="102" width="150" height="46" rx="9" fill="#C08A2E"/>
+          <text x="575" y="122" fill="#fff">2 · காரணம் ஆய்வு</text><text x="575" y="139" fill="#3B2A06" font-size="9.5" font-family="IBM Plex Mono, Anek Tamil">ROOT CAUSE</text>
+        </g>
+        <g>
+          <rect x="285" y="196" width="150" height="46" rx="9" fill="#1F7A6B"/>
+          <text x="360" y="216" fill="#fff">3 · விதி எழுதுதல்</text><text x="360" y="233" fill="#CFE6E1" font-size="9.5" font-family="IBM Plex Mono, Anek Tamil">WRITE THE RULE</text>
+        </g>
+        <g>
+          <rect x="70" y="102" width="150" height="46" rx="9" fill="#0E2B33"/>
+          <text x="145" y="122" fill="#fff">4 · அமைப்பில் சேர்</text><text x="145" y="139" fill="#C08A2E" font-size="9.5" font-family="IBM Plex Mono, Anek Tamil">INTO THE SOP</text>
+        </g>
+        <g stroke="#C08A2E" stroke-width="2" fill="none" marker-end="url(#ar6)">
+          <path d="M440 42 A98 98 0 0 1 490 100"/>
+          <path d="M492 155 A98 98 0 0 1 440 205"/>
+          <path d="M280 208 A98 98 0 0 1 228 152"/>
+          <path d="M228 98 A98 98 0 0 1 280 44"/>
+        </g>
+      </g>
+    </svg>
+    <figcaption><b>படம் 8.1</b> — ஒவ்வொரு இழப்பும் ஒரு புதிய விதியாக, அந்த விதி ஒரு SOP ஆக மாறும்போதுதான் அது உண்மையான முதலீடு.</figcaption>
+  </figure>
+
+  <h3><span class="tag">8.2</span>பற்றாக்குறை vs வளமான மனப்பான்மை</h3>
+  <table>
+    <tr><th>சூழல்</th><th>பற்றாக்குறை மனநிலை <span class="en">(Scarcity)</span></th><th>வளமான மனநிலை <span class="en">(Abundance)</span></th></tr>
+    <tr><td>போட்டியாளர் வளர்கிறார்</td><td>"என் சந்தை போய்விட்டது"</td><td>"சந்தை பெரிதாகிறது — நான் என்ன கற்கலாம்?"</td></tr>
+    <tr><td>பணியாளர் சிறப்பாகச் செய்கிறார்</td><td>"என் இடத்தைப் பிடித்துவிடுவார்"</td><td>"இவரை வளர்த்தால் நான் மேலே செல்லலாம்"</td></tr>
+    <tr><td>அறிவைப் பகிர்தல்</td><td>ரகசியமாக வைத்தல்</td><td>பகிர்ந்து நம்பிக்கையும் நெட்வொர்க்கும் கட்டுதல்</td></tr>
+    <tr><td>தோல்வி</td><td>அடையாளம் — "நான் தோல்வியாளன்"</td><td>நிகழ்வு — "அந்த முயற்சி தோற்றது"</td></tr>
+  </table>
+  <blockquote>தோல்வி என்பது நீங்கள் யார் என்பது அல்ல; அது நீங்கள் ஒரு முறை என்ன செய்தீர்கள் என்பது மட்டுமே.<cite>அத்தியாயம் 08 · மையக் கருத்து</cite></blockquote>
+</section>
+
+<!-- =============== CH 9 =============== -->
+<section class="chapter" id="c9">
+  <div class="ch-head">
+    <div class="ch-num">09</div>
+    <div><h2>ஆற்றல், ஆரோக்கியம் மற்றும் நீடித்த ஓட்டம்</h2>
+    <div class="ch-sub">ENERGY · HEALTH · SUSTAINABILITY</div></div>
+  </div>
+  <p>தொழில் ஒரு குறுகிய ஓட்டப்பந்தயம் அல்ல, மாரத்தான். நேரத்தை நிர்வகிப்பதை விட <b>ஆற்றலை நிர்வகிப்பது</b> முக்கியம் — 10 மணி நேரம் சோர்வுடன் வேலை செய்வதை விட, 5 மணி நேரம் முழு கவனத்துடன் வேலை செய்வது அதிக பலன் தரும்.</p>
+  <figure>
+    <svg viewBox="0 0 720 230" role="img" aria-label="தினசரி ஆற்றல் வளைவு">
+      <g font-family="Noto Sans Tamil" font-size="11">
+        <line x1="60" y1="180" x2="690" y2="180" stroke="#D8D2C4" stroke-width="2"/>
+        <line x1="60" y1="25" x2="60" y2="180" stroke="#D8D2C4" stroke-width="2"/>
+        <text x="46" y="34" text-anchor="end" fill="#3C5A63" font-size="10">உயர்</text>
+        <text x="46" y="178" text-anchor="end" fill="#3C5A63" font-size="10">குறை</text>
+        <path d="M60 130 C110 60, 160 45, 220 50 C280 55, 300 120, 360 140 C420 155, 450 95, 520 88 C580 82, 620 130, 690 165"
+              fill="none" stroke="#1F7A6B" stroke-width="3"/>
+        <rect x="120" y="25" width="130" height="155" fill="#1F7A6B" opacity=".12"/>
+        <rect x="450" y="25" width="110" height="155" fill="#C08A2E" opacity=".14"/>
+        <text x="185" y="205" text-anchor="middle" fill="#1F7A6B" font-size="11.5">ஆழ்ந்த வேலை</text>
+        <text x="505" y="205" text-anchor="middle" fill="#8A6410" font-size="11.5">இரண்டாம் உச்சம்</text>
+        <text x="360" y="205" text-anchor="middle" fill="#A8402F" font-size="11.5">மதிய சரிவு — கூட்டங்கள்</text>
+        <g fill="#3C5A63" font-size="10" font-family="IBM Plex Mono, Anek Tamil">
+          <text x="80" y="196">6AM</text><text x="240" y="196">10AM</text><text x="420" y="196">2PM</text><text x="600" y="196">6PM</text>
+        </g>
+      </g>
+    </svg>
+    <figcaption><b>படம் 9.1</b> — உங்கள் சொந்த ஆற்றல் வளைவை ஒரு வாரம் கண்காணியுங்கள். மிக முக்கியமான பணியை உச்சத்தில் வையுங்கள்.</figcaption>
+  </figure>
+  <ul>
+    <li><b>தூக்கம்:</b> 7–8 மணி நேரம். தூக்கத்தைக் குறைப்பது கடின உழைப்பு அல்ல; அது முடிவெடுக்கும் திறனுக்குச் செய்யும் நாசம்.</li>
+    <li><b>உடற்பயிற்சி:</b> வாரம் 4 நாள், 30 நிமிடம் போதும். இது நேர விரயம் அல்ல — ஆற்றல் முதலீடு.</li>
+    <li><b>எல்லைகள்:</b> ஒரு நாளில் வேலை முடியும் நேரத்தை நிர்ணயியுங்கள். எப்போதும் "ஆன்"-ல் இருப்பது அர்ப்பணிப்பு அல்ல, திட்டமிடல் இல்லாமை.</li>
+    <li><b>உறவுகள்:</b> குடும்பமும் நட்பும்தான் நெருக்கடிக் காலத்தில் உங்களைத் தாங்கும் அமைப்பு.</li>
+  </ul>
+</section>
+
+<!-- =============== CH 10 =============== -->
+<section class="chapter" id="c10">
+  <div class="ch-head">
+    <div class="ch-num">10</div>
+    <div><h2>90-நாள் செயல் திட்டம்</h2>
+    <div class="ch-sub">90-DAY IMPLEMENTATION ROADMAP</div></div>
+  </div>
+  <p>அறிவு செயலாக மாறாதவரை மதிப்பற்றது. கீழே உள்ள 90-நாள் வரைபடம் இந்த நூலின் அனைத்து அத்தியாயங்களையும் ஒரு நடைமுறை வரிசையில் இணைக்கிறது.</p>
+  <figure>
+    <svg viewBox="0 0 720 260" role="img" aria-label="90 நாள் வரைபடம்">
+      <g font-family="Noto Sans Tamil" font-size="12">
+        <line x1="60" y1="60" x2="660" y2="60" stroke="#D8D2C4" stroke-width="4"/>
+        <g>
+          <circle cx="140" cy="60" r="13" fill="#1F7A6B"/><text x="140" y="65" fill="#fff" text-anchor="middle" font-size="11" font-family="IBM Plex Mono, Anek Tamil">30</text>
+          <text x="140" y="36" text-anchor="middle" font-size="12.5" fill="#1F7A6B" font-family="Anek Tamil" font-weight="700">அடித்தளம்</text>
+          <rect x="65" y="88" width="150" height="140" rx="10" fill="#1F7A6B" opacity=".12"/>
+          <g fill="#0E2B33" font-size="11.5">
+            <text x="78" y="112">· 10X இலக்கு எழுதுதல்</text>
+            <text x="78" y="134">· நிதி எண்களைக் கணக்கிடு</text>
+            <text x="78" y="156">· அவசரகால நிதி தொடங்கு</text>
+            <text x="78" y="178">· ஐசன்ஹோவர் அணி பயன்பாடு</text>
+            <text x="78" y="200">· தினசரி ஆற்றல் கண்காணிப்பு</text>
+          </g>
+        </g>
+        <g>
+          <circle cx="360" cy="60" r="13" fill="#C08A2E"/><text x="360" y="65" fill="#fff" text-anchor="middle" font-size="11" font-family="IBM Plex Mono, Anek Tamil">60</text>
+          <text x="360" y="36" text-anchor="middle" font-size="12.5" fill="#8A6410" font-family="Anek Tamil" font-weight="700">அமைப்பு</text>
+          <rect x="285" y="88" width="150" height="140" rx="10" fill="#C08A2E" opacity=".14"/>
+          <g fill="#0E2B33" font-size="11.5">
+            <text x="298" y="112">· 3 முக்கிய SOP எழுது</text>
+            <text x="298" y="134">· ஒப்படைப்பு அணி நிரப்பு</text>
+            <text x="298" y="156">· முதல் பணியை ஒப்படை</text>
+            <text x="298" y="178">· மேல் 20% வாடிக்கையாளர்</text>
+            <text x="298" y="200">· விற்பனைப் புனல் அளவீடு</text>
+          </g>
+        </g>
+        <g>
+          <circle cx="580" cy="60" r="13" fill="#A8402F"/><text x="580" y="65" fill="#fff" text-anchor="middle" font-size="11" font-family="IBM Plex Mono, Anek Tamil">90</text>
+          <text x="580" y="36" text-anchor="middle" font-size="12.5" fill="#A8402F" font-family="Anek Tamil" font-weight="700">வளர்ச்சி</text>
+          <rect x="505" y="88" width="150" height="140" rx="10" fill="#A8402F" opacity=".12"/>
+          <g fill="#0E2B33" font-size="11.5">
+            <text x="518" y="112">· CAC / LTV கணக்கிடு</text>
+            <text x="518" y="134">· தக்கவைப்புத் திட்டம்</text>
+            <text x="518" y="156">· தோல்விப் பாடங்களை SOP-ல்</text>
+            <text x="518" y="178">· சுய மதிப்பீடு மீண்டும்</text>
+            <text x="518" y="200">· அடுத்த 90 நாள் திட்டம்</text>
+          </g>
+        </g>
+      </g>
+    </svg>
+    <figcaption><b>படம் 10.1</b> — ஒவ்வொரு 30 நாளின் முடிவிலும் ஒரு மணி நேரம் ஒதுக்கி, என்ன வேலை செய்தது, என்ன செய்யவில்லை என்று எழுதுங்கள்.</figcaption>
+  </figure>
+
+  <h3><span class="tag">10.1</span>இந்த வாரத்தின் பணிப் பட்டியல்</h3>
+  <p style="font-size:13.5px;color:var(--ink-soft)">கீழே உள்ள ஒவ்வொரு வரியையும் தட்டி (click) முடித்ததாகக் குறியிடுங்கள்.</p>
+  <ul class="checklist" id="cl">
+    <li><span class="box"></span><span>அடுத்த 12 மாதங்களுக்கான 10X இலக்கை எழுதுங்கள்</span></li>
+    <li><span class="box"></span><span>கடந்த மாதத்தின் ஒரு தோல்வியில் <i>உங்கள்</i> பங்கை எழுதுங்கள்</span></li>
+    <li><span class="box"></span><span>உங்கள் Runway (பணம் ÷ மாதச் செலவு) கணக்கிடுங்கள்</span></li>
+    <li><span class="box"></span><span>அவசரகால நிதிக்காக ஒரு தனிக் கணக்கைத் திறங்கள்</span></li>
+    <li><span class="box"></span><span>இந்த வாரப் பணிகளை ஐசன்ஹோவர் அணியில் வகைப்படுத்துங்கள்</span></li>
+    <li><span class="box"></span><span>அடிக்கடி செய்யும் ஒரு பணிக்கு SOP எழுதுங்கள்</span></li>
+    <li><span class="box"></span><span>ஒப்படைக்க வேண்டிய முதல் பணியை அடையாளம் காணுங்கள்</span></li>
+    <li><span class="box"></span><span>மேல் 20% வாடிக்கையாளர் பட்டியலைத் தயாரியுங்கள்</span></li>
+    <li><span class="box"></span><span>ஆழ்ந்த வேலைக்கு தினமும் 2 மணி நேரம் ஒதுக்குங்கள்</span></li>
+    <li><span class="box"></span><span>வாரம் 4 நாள் உடற்பயிற்சி நேரத்தை நிர்ணயியுங்கள்</span></li>
+  </ul>
+  <p id="clProgress" class="mono" style="font-size:13px;color:var(--jade);font-weight:600"></p>
+</section>
+
+<!-- =============== CH 11 =============== -->
+<section class="chapter" id="c11">
+  <div class="ch-head">
+    <div class="ch-num">11</div>
+    <div><h2>சுய மதிப்பீட்டுக் கருவி</h2>
+    <div class="ch-sub">SELF-ASSESSMENT SCORECARD</div></div>
+  </div>
+  <p>ஒவ்வொரு பகுதியிலும் நீங்கள் இப்போது எங்கே இருக்கிறீர்கள் என்பதை 1 (மிகக் குறைவு) முதல 10 (மிகச் சிறப்பு) வரை மதிப்பிடுங்கள். 90 நாட்களுக்குப் பிறகு மீண்டும் செய்து ஒப்பிடுங்கள்.</p>
+
+  <div class="assess">
+    <h3>உங்கள் தற்போதைய நிலை</h3>
+    <div class="sub">ஸ்லைடரை நகர்த்தி மதிப்பிடுங்கள் · Move the sliders</div>
+    <div id="sliders"></div>
+    <div id="scoreOut"></div>
+  </div>
+</section>
+
+<!-- =============== CH 12 =============== -->
+<section class="chapter" id="c12">
+  <div class="ch-head">
+    <div class="ch-num">12</div>
+    <div><h2>சொற்களஞ்சியம்</h2>
+    <div class="ch-sub">GLOSSARY OF KEY TERMS</div></div>
+  </div>
+  <dl class="gloss">
+    <dt>10X Rule</dt><dd>நினைத்த இலக்கை 10 மடங்காக்கி, முயற்சியையும் 10 மடங்காக்கும் அணுகுமுறை.</dd>
+    <dt>Extreme Ownership</dt><dd>அணியின் ஒவ்வொரு முடிவுக்கும் தலைவர் முழுப் பொறுப்பேற்கும் தலைமைத்துவக் கொள்கை.</dd>
+    <dt>Circle of Control</dt><dd>உங்கள் நேரடிக் கட்டுப்பாட்டில் உள்ள விஷயங்களின் வட்டம் — ஆற்றல் இங்கு மட்டுமே செலவிட வேண்டும்.</dd>
+    <dt>Eisenhower Matrix</dt><dd>அவசரம் × முக்கியத்துவம் என்ற இரு அச்சுகளில் பணிகளை நான்கு கட்டங்களாகப் பிரிக்கும் முறை.</dd>
+    <dt>Pareto Principle (80/20)</dt><dd>முடிவுகளில் 80% ஆனது காரணங்களில் 20%-லிருந்து வருகிறது என்ற அவதானிப்பு.</dd>
+    <dt>SOP</dt><dd>Standard Operating Procedure — ஒரு பணியை நிலையான தரத்தில் செய்வதற்கான எழுதப்பட்ட வழிமுறை.</dd>
+    <dt>Runway</dt><dd>தற்போதைய பணத்தை மாதச் செலவால் வகுத்தால் கிடைக்கும் மாதங்களின் எண்ணிக்கை.</dd>
+    <dt>Break-even</dt><dd>லாபமும் நஷ்டமும் இல்லாத நிலையை அடைய தேவையான விற்பனை அளவு.</dd>
+    <dt>CAC</dt><dd>Customer Acquisition Cost — ஒரு புதிய வாடிக்கையாளரைப் பெற ஆகும் சராசரிச் செலவு.</dd>
+    <dt>LTV</dt><dd>Lifetime Value — ஒரு வாடிக்கையாளர் முழு உறவுக் காலத்தில் தரும் மொத்த லாபம்.</dd>
+    <dt>Scarcity Mindset</dt><dd>வளங்களும் வாய்ப்புகளும் குறைவு என்ற அச்சத்துடன் செயல்படும் மனநிலை.</dd>
+    <dt>Abundance Mindset</dt><dd>வாய்ப்புகள் தொடர்ந்து உருவாகின்றன என்ற நம்பிக்கையுடன் செயல்படும் மனநிலை.</dd>
+    <dt>Deep Work</dt><dd>கவனச் சிதறல் இல்லாமல் ஒரே பணியில் ஆழ்ந்து ஈடுபடும் தொடர்ச்சியான நேரம்.</dd>
+    <dt>Delegation</dt><dd>சரியான நபரிடம் பொறுப்பையும் அதற்குரிய அதிகாரத்தையும் ஒப்படைக்கும் செயல்முறை.</dd>
+  </dl>
+
+  <blockquote>வெற்றி என்பது ஒரு நாளின் பெரிய முடிவு அல்ல; அது ஆயிரம் நாட்களின் சிறிய, சரியான தேர்வுகளின் கூட்டுத்தொகை.<cite>நிறைவுரை</cite></blockquote>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <b>தொழில்முனைவோர் சுய முன்னேற்ற வழிகாட்டி</b><br>
+  சுய கற்றல் நோக்கத்திற்காகத் தயாரிக்கப்பட்ட படிப்பு நூல் · Study Purpose Edition · 2026
+</footer>
+
+</main>
+</div>
+
+<div class="toolbar">
+  <button onclick="window.print()">🖨 PDF ஆக சேமி</button>
+</div>
+
+<script>
+/* ---------- checklist ---------- */
+const cl = document.getElementById('cl');
+const prog = document.getElementById('clProgress');
+function updateProg(){
+  const total = cl.children.length;
+  const done = cl.querySelectorAll('.done').length;
+  prog.textContent = `முடிந்தது: ${done} / ${total}` + (done===total ? '  ✓ அனைத்தும் முடிந்தது!' : '');
+}
+[...cl.children].forEach(li=>li.addEventListener('click',()=>{li.classList.toggle('done');updateProg();}));
+updateProg();
+
+/* ---------- self assessment ---------- */
+const areas = [
+  ['இலக்கு தெளிவு','Goal clarity','#C08A2E'],
+  ['பொறுப்பேற்றல்','Ownership','#1F7A6B'],
+  ['தொடர்பு & தோற்றம்','Communication','#7FC0B4'],
+  ['உணர்ச்சி கட்டுப்பாடு','Emotional control','#A8402F'],
+  ['நேர மேலாண்மை','Time management','#D9A79C'],
+  ['நிதி ஒழுக்கம்','Finance','#C08A2E'],
+  ['சிஸ்டம்ஸ் & SOP','Systems','#1F7A6B'],
+  ['விற்பனை & வாடிக்கையாளர்','Sales','#7FC0B4'],
+  ['ஆற்றல் & ஆரோக்கியம்','Energy','#A8402F']
+];
+const slidersEl = document.getElementById('sliders');
+const out = document.getElementById('scoreOut');
+areas.forEach((a,i)=>{
+  const d=document.createElement('div');
+  d.className='slider-row';
+  d.innerHTML = `<label><span>${a[0]} <span style="opacity:.55;font-size:11px">${a[1]}</span></span><b id="v${i}">5</b></label>
+    <input type="range" min="1" max="10" value="5" id="s${i}">`;
+  slidersEl.appendChild(d);
+  d.querySelector('input').addEventListener('input',e=>{
+    document.getElementById('v'+i).textContent=e.target.value; render();
+  });
+});
+function render(){
+  let sum=0, rows='';
+  areas.forEach((a,i)=>{
+    const v=+document.getElementById('s'+i).value; sum+=v;
+    rows += `<div class="bar-row"><span class="nm">${a[0]}</span>
+      <span class="bar-track"><span class="bar-fill" style="width:${v*10}%;background:${a[2]}"></span></span>
+      <span class="mono" style="width:26px;text-align:right;color:#C08A2E">${v}</span></div>`;
+  });
+  const pct = Math.round(sum/(areas.length*10)*100);
+  let verdict, vcolor;
+  if(pct<40){verdict='அடித்தளம் தேவை — அத்தியாயம் 01, 04, 05 முதலில் படியுங்கள்.';vcolor='#E39B8C';}
+  else if(pct<70){verdict='நல்ல தொடக்கம் — அமைப்பு உருவாக்கத்தில் கவனம் (அத்தியாயம் 06).';vcolor='#E8C36B';}
+  else {verdict='வலுவான நிலை — வளர்ச்சி மற்றும் ஒப்படைப்பில் கவனம் (அத்தியாயம் 07).';vcolor='#7FC0B4';}
+  out.innerHTML = rows + `<div class="total">மொத்த மதிப்பெண்: <b>${sum}</b> / 90 &nbsp;·&nbsp; ${pct}%</div>
+    <div style="font-size:13.5px;margin-top:8px;color:${vcolor}">${verdict}</div>`;
+}
+render();
+
+/* ---------- active nav ---------- */
+const links=[...document.querySelectorAll('nav.toc a')];
+const secs=links.map(l=>document.querySelector(l.getAttribute('href'))).filter(Boolean);
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const m=links.find(l=>l.getAttribute('href')==='#'+e.target.id);
+      if(m)m.classList.add('active');
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+secs.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
